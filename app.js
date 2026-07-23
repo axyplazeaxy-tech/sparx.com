@@ -3,7 +3,6 @@
 
 function openPage(page){
 
-
     let area = document.getElementById("page");
 
 
@@ -17,18 +16,15 @@ function openPage(page){
         Science<br>
         English<br>
         PE
-        </p>
-        `;
+        </p>`;
 
     }
-
 
 
     if(page === "subjects"){
 
         area.innerHTML = `
         <h2>📚 Subjects</h2>
-
         <p>
         Maths<br>
         English<br>
@@ -36,74 +32,58 @@ function openPage(page){
         Computing<br>
         Art<br>
         Languages
-        </p>
-        `;
+        </p>`;
 
     }
-
 
 
     if(page === "homework"){
 
         area.innerHTML = `
         <h2>📝 Homework</h2>
-
-        <p>
-        No new homework today.
-        </p>
-        `;
+        <p>No new homework today.</p>`;
 
     }
-
 
 
     if(page === "events"){
 
         area.innerHTML = `
         <h2>🎉 Events</h2>
-
         <p>
         School trips<br>
         Sports day<br>
         Clubs<br>
         Assemblies
-        </p>
-        `;
+        </p>`;
 
     }
-
 
 
     if(page === "staff"){
 
         area.innerHTML = `
         <h2>👩‍🏫 Staff</h2>
-
         <p>
         Headteacher<br>
         Maths Department<br>
         Science Department<br>
         Student Support
-        </p>
-        `;
+        </p>`;
 
     }
-
 
 
     if(page === "contact"){
 
         area.innerHTML = `
         <h2>📞 Contact</h2>
-
         <p>
         Email: school@example.com<br>
         Phone: 0000 000000
-        </p>
-        `;
+        </p>`;
 
     }
-
 
 }
 
@@ -113,8 +93,7 @@ function openPage(page){
 
 
 
-
-// RETRO GAME AREA
+// SCHOOL ARCADE MENU 🎮
 
 
 function openGames(){
@@ -129,19 +108,19 @@ document.body.innerHTML = `
 
 <h1>🎮 School Arcade</h1>
 
-<p>Retro games zone</p>
+<p>Choose a game to play!</p>
 
 </header>
 
 
 
 <button onclick="location.reload()">
-← Back to School
+⬅ Back to School
 </button>
 
 
 
-<h2>Choose a game</h2>
+<section class="buttons">
 
 
 <button onclick="startSnake()">
@@ -150,17 +129,42 @@ document.body.innerHTML = `
 
 
 
-<canvas 
-id="gameCanvas"
-width="400"
-height="400">
-</canvas>
+<button>
+🏓 Pong
+</button>
+
+
+
+<button>
+🚀 Space Shooter
+</button>
+
+
+
+<button>
+🧱 Breakout
+</button>
+
+
+</section>
+
+
+
+<div class="card">
+
+<h2>🕹️ Retro Zone</h2>
+
+<p>
+Classic games made for School Hub.
+</p>
+
+</div>
+
 
 
 </div>
 
 `;
-
 
 }
 
@@ -171,8 +175,7 @@ height="400">
 
 
 
-
-// SNAKE GAME
+// SNAKE GAME 🐍
 
 
 function startSnake(){
@@ -182,32 +185,37 @@ let canvas =
 document.getElementById("gameCanvas");
 
 
+if(!canvas){
+
+document.body.innerHTML += `
+<canvas id="gameCanvas" width="400" height="400"></canvas>
+`;
+
+canvas =
+document.getElementById("gameCanvas");
+
+}
+
+
+
 let ctx =
 canvas.getContext("2d");
 
 
 
 let snake = [
-{
-x:200,
-y:200
-}
+{x:200,y:200}
 ];
 
 
-
 let food = {
-
 x:100,
-
 y:100
-
 };
 
 
 
 let dx = 20;
-
 let dy = 0;
 
 
@@ -215,35 +223,27 @@ let dy = 0;
 document.onkeydown = function(e){
 
 
-if(e.key === "ArrowUp"){
-
-dx = 0;
-dy = -20;
-
+if(e.key==="ArrowUp"){
+dx=0;
+dy=-20;
 }
 
 
-if(e.key === "ArrowDown"){
-
-dx = 0;
-dy = 20;
-
+if(e.key==="ArrowDown"){
+dx=0;
+dy=20;
 }
 
 
-if(e.key === "ArrowLeft"){
-
-dx = -20;
-dy = 0;
-
+if(e.key==="ArrowLeft"){
+dx=-20;
+dy=0;
 }
 
 
-if(e.key === "ArrowRight"){
-
-dx = 20;
-dy = 0;
-
+if(e.key==="ArrowRight"){
+dx=20;
+dy=0;
 }
 
 
@@ -253,9 +253,78 @@ dy = 0;
 
 
 
+// TOUCH CONTROLS 📱
+
+
+let startX = 0;
+let startY = 0;
+
+
+
+canvas.addEventListener("touchstart",e=>{
+
+startX=e.touches[0].clientX;
+startY=e.touches[0].clientY;
+
+});
+
+
+
+canvas.addEventListener("touchend",e=>{
+
+
+let endX=e.changedTouches[0].clientX;
+let endY=e.changedTouches[0].clientY;
+
+
+let x=endX-startX;
+let y=endY-startY;
+
+
+
+if(Math.abs(x)>Math.abs(y)){
+
+
+if(x>0){
+
+dx=20;
+dy=0;
+
+}else{
+
+dx=-20;
+dy=0;
+
+}
+
+
+}else{
+
+
+if(y>0){
+
+dx=0;
+dy=20;
+
+}else{
+
+dx=0;
+dy=-20;
+
+}
+
+
+}
+
+
+});
+
+
+
+
+
 
 function loop(){
-
 
 
 ctx.fillStyle="black";
@@ -269,12 +338,10 @@ ctx.fillRect(
 
 
 
-
 ctx.fillStyle="lime";
 
 
 snake.forEach(part=>{
-
 
 ctx.fillRect(
 part.x,
@@ -283,15 +350,11 @@ part.y,
 20
 );
 
-
 });
 
 
 
-
-
 ctx.fillStyle="red";
-
 
 ctx.fillRect(
 food.x,
@@ -302,17 +365,13 @@ food.y,
 
 
 
+let head={
 
+x:snake[0].x+dx,
 
-
-let head = {
-
-x: snake[0].x + dx,
-
-y: snake[0].y + dy
+y:snake[0].y+dy
 
 };
-
 
 
 
@@ -320,24 +379,14 @@ snake.unshift(head);
 
 
 
-
-if(
-head.x === food.x &&
-head.y === food.y
-){
+if(head.x===food.x && head.y===food.y){
 
 
-food.x =
-Math.floor(Math.random()*20)*20;
+food.x=Math.floor(Math.random()*20)*20;
+food.y=Math.floor(Math.random()*20)*20;
 
 
-food.y =
-Math.floor(Math.random()*20)*20;
-
-
-}
-
-else{
+}else{
 
 
 snake.pop();
@@ -347,23 +396,16 @@ snake.pop();
 
 
 
-
-
 if(
-head.x < 0 ||
-head.y < 0 ||
-head.x >= 400 ||
-head.y >= 400
+head.x<0 ||
+head.y<0 ||
+head.x>=400 ||
+head.y>=400
 ){
 
-
 alert("Game Over!");
-
 location.reload();
-
-
 return;
-
 
 }
 
