@@ -1,131 +1,77 @@
-/* FIVE NIGHTS CUSTOM - HORROR STYLE CSS 🎮 */
-
-
 body {
-
-    margin:0;
-
-    background:#000;
-
-    color:white;
-
-    font-family:monospace;
-
-    text-align:center;
-
-    overflow-x:hidden;
-
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef4ff;
+    color: #222;
 }
 
 
-
-#game {
-
-    min-height:100vh;
-
-    background:
-    radial-gradient(
-    circle,
-    #222,
-    #000
-    );
-
-    padding-top:20px;
-
+#app {
+    max-width: 500px;
+    margin: auto;
+    min-height: 100vh;
+    background: white;
 }
 
 
-
-h1 {
-
-    color:#ddd;
-
-    text-shadow:
-    0 0 15px red;
-
+header {
+    background: #1d4ed8;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 0 0 25px 25px;
 }
 
 
+header h1 {
+    margin: 0;
+    font-size: 35px;
+}
 
 
+.news {
+    padding: 20px;
+}
 
-#office,
-#cameras {
 
-    width:90%;
+.card {
 
-    max-width:700px;
-
-    margin:auto;
-
-    background:#050505;
-
-    border:3px solid #555;
-
-    padding:20px;
-
-    border-radius:15px;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
 
     box-shadow:
-    0 0 25px black;
+    0 5px 15px #ccc;
 
 }
 
 
 
+.buttons {
 
-
-#screen {
-
-    height:280px;
-
-    background:
-
-    linear-gradient(
-    #333,
-    #000
-    );
-
-    border:3px solid #777;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:28px;
-
-    margin:20px;
-
-    box-shadow:
-    inset 0 0 30px black;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    padding: 20px;
 
 }
-
-
 
 
 
 button {
 
-    background:#151515;
+    background: #2563eb;
+    color: white;
 
-    color:white;
+    border: none;
 
-    border:2px solid #777;
+    padding: 18px;
 
-    padding:15px;
+    border-radius: 15px;
 
-    margin:8px;
+    font-size: 16px;
 
-    font-size:18px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    transition:.2s;
+    cursor: pointer;
 
 }
 
@@ -133,231 +79,58 @@ button {
 
 button:hover {
 
-    background:#444;
+    background: #1e40af;
 
-    transform:scale(1.05);
+}
+
+
+
+#page {
+
+    margin: 20px;
+
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border-radius: 20px;
+
+    min-height: 150px;
 
 }
 
 
 
 
+.learn-more {
 
-#cameras {
+    text-align: center;
 
-    display:none;
+    padding: 30px;
+
+}
+
+
+
+.learn-more button {
+
+    background: #111827;
+
+    font-size: 20px;
 
 }
 
 
 
 
-
-#cameraScreen {
-
-    height:320px;
-
-    background:black;
-
-    border:4px solid #777;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-
-
-
-#cameraName {
-
-    color:#aaa;
-
-}
-
-
-
-
-
-#cameraImage {
-
-    height:230px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:28px;
-
-    position:relative;
-
-}
-
-
-
-
-
-/* CAMERA STATIC */
-
-
-#cameraImage::after {
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    repeating-linear-gradient(
-
-    0deg,
-
-    rgba(255,255,255,.08),
-
-    transparent 3px
-
-    );
-
-}
-
-
-
-
-
-/* CAMERA MAP */
-
-
-#map {
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-}
-
-
-
-#map button {
-
-    width:130px;
-
-}
-
-
-
-
-
-/* ANIMATRONIC */
-
-
-#animatronic {
-
-    width:140px;
-
-    height:170px;
-
-    background:
-
-    linear-gradient(
-    #555,
-    #111
-    );
-
-
-    border:4px solid #666;
-
-    border-radius:25px;
-
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    font-size:60px;
-
-
-    color:red;
-
-
-    box-shadow:
-
-    0 0 20px red;
-
-
-    animation:glitch .25s infinite;
-
-}
-
-
-
-
-@keyframes glitch {
-
-
-0%{
-
-transform:translateX(0);
-
-}
-
-
-50%{
-
-transform:translateX(5px);
-
-}
-
-
-100%{
-
-transform:translateX(0);
-
-}
-
-
-}
-
-
-
-
-
-
-
-/* PHONE SUPPORT */
-
+/* phone layout */
 
 @media(max-width:600px){
 
+    .buttons {
 
-button{
+        grid-template-columns:1fr;
 
-    width:90%;
-
-    font-size:22px;
-
-}
-
-
-
-#screen,
-#cameraScreen{
-
-    height:220px;
-
-}
-
+    }
 
 }
