@@ -1,47 +1,54 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #eef4ff;
-    color: #222;
+
+    margin:0;
+    background:#f2f5f8;
+    color:#222;
+    font-family:Arial, sans-serif;
+
 }
 
 
 #app {
-    max-width: 500px;
-    margin: auto;
-    min-height: 100vh;
-    background: white;
+
+    max-width:900px;
+    margin:auto;
+    min-height:100vh;
+    background:white;
+    padding:20px;
+
 }
+
 
 
 header {
-    background: #1d4ed8;
-    color: white;
-    padding: 30px;
-    text-align: center;
-    border-radius: 0 0 25px 25px;
+
+    background:#164a8a;
+    color:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+
 }
+
 
 
 header h1 {
-    margin: 0;
-    font-size: 35px;
+
+    margin:0;
+    font-size:35px;
+
 }
 
 
-.news {
-    padding: 20px;
-}
 
-
+.news,
 .card {
 
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-
-    box-shadow:
-    0 5px 15px #ccc;
+    background:#ffffff;
+    margin-top:20px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 10px #0002;
 
 }
 
@@ -49,10 +56,11 @@ header h1 {
 
 .buttons {
 
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 15px;
-    padding: 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
 
 }
 
@@ -60,18 +68,13 @@ header h1 {
 
 button {
 
-    background: #2563eb;
-    color: white;
-
-    border: none;
-
-    padding: 18px;
-
-    border-radius: 15px;
-
-    font-size: 16px;
-
-    cursor: pointer;
+    background:#164a8a;
+    color:white;
+    border:none;
+    padding:15px 20px;
+    border-radius:10px;
+    font-size:17px;
+    cursor:pointer;
 
 }
 
@@ -79,7 +82,7 @@ button {
 
 button:hover {
 
-    background: #1e40af;
+    background:#0e3566;
 
 }
 
@@ -87,49 +90,49 @@ button:hover {
 
 #page {
 
-    margin: 20px;
-
-    padding: 20px;
-
-    background: #f8fafc;
-
-    border-radius: 20px;
-
-    min-height: 150px;
+    margin-top:20px;
+    padding:20px;
+    background:#eef4ff;
+    border-radius:15px;
 
 }
-
 
 
 
 .learn-more {
 
-    text-align: center;
-
-    padding: 30px;
-
-}
-
-
-
-.learn-more button {
-
-    background: #111827;
-
-    font-size: 20px;
+    text-align:center;
+    margin-top:30px;
 
 }
 
 
 
+canvas {
 
-/* phone layout */
+    display:block;
+    margin:25px auto;
+    background:black;
+    border:5px solid #164a8a;
+    border-radius:10px;
+
+}
+
+
 
 @media(max-width:600px){
 
-    .buttons {
+    button {
 
-        grid-template-columns:1fr;
+        width:90%;
+        font-size:20px;
+
+    }
+
+
+    header h1 {
+
+        font-size:28px;
 
     }
 
