@@ -1,13 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sparx</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>SPARX</h1>
+    <p>Learning made smarter</p>
+</header>
+
+
+<section class="cards">
+
+    <div class="card">
+        <h2>📘 Sparx Maths</h2>
+        <p>
+            Sparx Maths helps students improve their maths skills
+            with personalised practice and challenging questions.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>🔬 Sparx Science</h2>
+        <p>
+            Sparx Science helps students learn science topics
+            through engaging activities and revision.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>📖 Sparx Reader</h2>
+        <p>
+            Sparx Reader helps students build reading skills
+            with guided reading practice.
+        </p>
+    </div>
+
+</section>
+
+
+<button onclick="openGames()" class="more">
+    More Info
+</button>
+
+
+
+<!-- FULL SCREEN ARCADE -->
+
 <div id="arcade">
 
     <h1>🎮 Sparx Arcade</h1>
 
-    <button onclick="startGame('flappy')">🐦 Flappy Sparx</button>
-    <button onclick="startGame('snake')">🐍 Snake</button>
-    <button onclick="startGame('night')">👻 Night Survival</button>
+    <p>Choose a game</p>
+
+
+    <button onclick="startGame('flappy')">
+        🐦 Flappy Sparx
+    </button>
+
+
+    <button onclick="startGame('snake')">
+        🐍 Snake
+    </button>
+
+
+    <button onclick="startGame('night')">
+        👻 Night Survival
+    </button>
+
 
     <canvas id="gameCanvas"></canvas>
 
-    <button onclick="closeGames()" class="back">← Back</button>
+
+    <button onclick="closeGames()" class="back">
+        ← Back
+    </button>
 
 </div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
