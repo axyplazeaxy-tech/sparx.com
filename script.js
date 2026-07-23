@@ -1,34 +1,40 @@
+// FIVE NIGHTS CUSTOM - Main Game Script
+
+
 let power = 100;
 let hour = 12;
 
 let doorClosed = false;
 let lightOn = false;
-
 let cameraOpen = false;
 
 let animatronicRoom = "stage";
 
+let gameOver = false;
 
-// Update game every second
+
+// POWER SYSTEM
 
 setInterval(() => {
 
+    if(gameOver) return;
+
+    let drain = 0.05;
+
+    if(doorClosed) drain += 0.15;
+    if(lightOn) drain += 0.10;
+    if(cameraOpen) drain += 0.05;
+
+
+    power -= drain;
+
+
     if(power <= 0){
+
         power = 0;
-        document.getElementById("power").innerHTML =
-        "Power: 0% - SYSTEM OFF";
-        return;
+        loseGame("Power Lost");
+
     }
-
-
-    let usage = 0.05;
-
-    if(doorClosed) usage += 0.15;
-    if(lightOn) usage += 0.10;
-    if(cameraOpen) usage += 0.05;
-
-
-    power -= usage;
 
 
     document.getElementById("power").innerHTML =
@@ -39,27 +45,25 @@ setInterval(() => {
 
 
 
-// Time system
+// NIGHT TIMER
 
 setInterval(()=>{
 
+    if(gameOver) return;
+
+
     hour++;
 
+
     if(hour >= 18){
-        hour = 12;
-    }
 
+        winGame();
 
-    let display = hour + ":00 AM";
-
-
-    if(hour === 6){
-        display = "6:00 AM - SURVIVED!";
     }
 
 
     document.getElementById("time").innerHTML =
-    display;
+    hour + ":00 AM";
 
 
 },30000);
@@ -67,17 +71,19 @@ setInterval(()=>{
 
 
 
-// Cameras
+// CAMERA SYSTEM
+
 
 function openCamera(){
 
-    cameraOpen = true;
+    cameraOpen=true;
 
     document.getElementById("office").style.display="none";
 
     document.getElementById("cameras").style.display="block";
 
 }
+
 
 
 function closeCamera(){
@@ -92,43 +98,58 @@ function closeCamera(){
 
 
 
+
 function camera(room){
 
-    let screen =
-    document.getElementById("cameraScreen");
+    let name =
+    document.getElementById("cameraName");
+
+    let image =
+    document.getElementById("cameraImage");
 
 
-    if(room==="stage"){
+    name.innerHTML =
+    "CAM - " + room.toUpperCase();
 
-        alert("Camera 1: Empty stage...");
+
+
+    if(animatronicRoom === room){
+
+
+        image.innerHTML =
+
+        `
+        <div id="animatronic">
+        👁️
+        </div>
+
+        ⚠️ MOVEMENT DETECTED
+        `;
+
 
     }
 
+    else{
 
-    if(room==="hall"){
 
-        if(animatronicRoom==="hall"){
-            alert("Something is standing in the hallway...");
-        }
-        else{
-            alert("Empty hallway.");
-        }
+        image.innerHTML =
+
+        `
+        📺 Empty room<br>
+        Signal stable
+        `;
+
 
     }
 
-
-    if(room==="room"){
-
-        alert("Dark room. Camera signal unstable.");
-
-    }
 
 }
 
 
 
 
-// Door
+// DOOR
+
 
 function toggleDoor(){
 
@@ -138,13 +159,14 @@ function toggleDoor(){
     if(doorClosed){
 
         document.getElementById("screen").innerHTML =
-        "🚪 Door CLOSED";
+        "🚪 DOOR CLOSED";
 
     }
+
     else{
 
         document.getElementById("screen").innerHTML =
-        "🚪 Door OPEN";
+        "🚪 DOOR OPEN";
 
     }
 
@@ -152,24 +174,25 @@ function toggleDoor(){
 
 
 
+// LIGHT
 
-// Light
 
 function toggleLight(){
 
-    lightOn=!lightOn;
+    lightOn = !lightOn;
 
 
     if(lightOn){
 
         document.getElementById("screen").innerHTML =
-        "💡 Hallway light ON";
+        "💡 LIGHT ON";
 
     }
+
     else{
 
         document.getElementById("screen").innerHTML =
-        "💡 Light OFF";
+        "💡 LIGHT OFF";
 
     }
 
@@ -177,32 +200,81 @@ function toggleLight(){
 
 
 
-// Simple animatronic movement
+// ANIMATRONIC AI
+
 
 setInterval(()=>{
 
-    let chance = Math.random();
+
+    if(gameOver) return;
 
 
-    if(chance < 0.3){
+    let rooms = [
 
-        let rooms=[
-            "stage",
-            "hall",
-            "room"
-        ];
+        "stage",
+        "hall",
+        "room"
 
+    ];
+
+
+    let move =
+    Math.random();
+
+
+    if(move < 0.5){
 
         animatronicRoom =
         rooms[Math.floor(Math.random()*rooms.length)];
 
-
         console.log(
-            "Animatronic moved to:",
-            animatronicRoom
+        "Animatronic moved:",
+        animatronicRoom
         );
 
     }
 
 
 },8000);
+
+
+
+
+// WIN / LOSE
+
+
+function loseGame(reason){
+
+    gameOver=true;
+
+    document.body.innerHTML =
+
+    `
+    <h1>GAME OVER</h1>
+    <h2>${reason}</h2>
+    <button onclick="location.reload()">
+    Restart
+    </button>
+    `;
+
+}
+
+
+
+function winGame(){
+
+    gameOver=true;
+
+
+    document.body.innerHTML =
+
+    `
+    <h1>6:00 AM</h1>
+    <h2>You survived the night!</h2>
+
+    <button onclick="location.reload()">
+    Play Again
+    </button>
+    `;
+
+}
