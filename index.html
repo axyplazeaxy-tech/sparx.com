@@ -1,162 +1,144 @@
-<!DOCTYPE html>
-<html>
+// 🎮 Controller Support for Five Nights Custom
 
-<head>
-<title>Five Nights Custom</title>
-<link rel="stylesheet" href="style.css">
-</head>
+let controllerConnected = false;
 
+let previousButtons = [];
 
-<body>
+let activeController = null;
 
 
-<div id="game">
 
+window.addEventListener("gamepadconnected", function(e){
 
-<h1>🌙 Five Nights Custom</h1>
+    controllerConnected = true;
 
+    activeController = e.gamepad.index;
 
-<!-- OFFICE -->
+    previousButtons = [];
 
-<div id="office">
+    console.log(
+        "Controller connected:",
+        e.gamepad.id
+    );
 
-<h2>Security Office</h2>
+});
 
 
-<p id="time">
-12:00 AM
-</p>
 
+window.addEventListener("gamepaddisconnected", function(e){
 
-<p id="power">
-Power: 100%
-</p>
+    controllerConnected = false;
 
+    activeController = null;
 
+    previousButtons = [];
 
-<div id="screen">
+    console.log(
+        "Controller disconnected"
+    );
 
-Office View
+});
 
-</div>
 
 
 
-<div id="controls">
 
-<button onclick="openCamera()">
-📹 Cameras
-</button>
+function buttonPressed(pad, button){
 
+    return (
+        pad.buttons[button] &&
+        pad.buttons[button].pressed &&
+        !previousButtons[button]
+    );
 
-<button onclick="toggleDoor()">
-🚪 Door
-</button>
+}
 
 
-<button onclick="toggleLight()">
-💡 Light
-</button>
 
 
-</div>
 
 
-</div>
+function checkController(){
 
 
+    if(!controllerConnected){
 
+        requestAnimationFrame(checkController);
 
+        return;
 
+    }
 
 
-<!-- CAMERA SYSTEM -->
 
+    let pad =
+    navigator.getGamepads()[activeController];
 
-<div id="cameras">
 
 
-<h2>
-📹 Security Monitor
-</h2>
+    if(!pad){
 
+        requestAnimationFrame(checkController);
 
+        return;
 
-<div id="cameraScreen">
+    }
 
 
-<h3 id="cameraName">
 
-CAM STAGE
 
-</h3>
+    // A / Cross = Cameras
 
+    if(buttonPressed(pad,0)){
 
-<div id="cameraImage">
+        openCamera();
 
-📺 Camera Feed
+    }
 
-</div>
 
 
-</div>
+    // B / Circle = Back
 
+    if(buttonPressed(pad,1)){
 
+        closeCamera();
 
+    }
 
 
-<h3>
-Camera Map
-</h3>
 
+    // X / Square = Light
 
+    if(buttonPressed(pad,2)){
 
-<div id="map">
+        toggleLight();
 
+    }
 
-<button onclick="camera('stage')">
-CAM 1<br>
-Stage
-</button>
 
 
-<button onclick="camera('hall')">
-CAM 2<br>
-Hall
-</button>
+    // Y / Triangle = Door
 
+    if(buttonPressed(pad,3)){
 
-<button onclick="camera('office')">
-CAM 3<br>
-Office
-</button>
+        toggleDoor();
 
+    }
 
-</div>
 
 
 
+    previousButtons =
+    pad.buttons.map(
+        button => button.pressed
+    );
 
-<button onclick="closeCamera()">
 
-⬅ Back
 
-</button>
+    requestAnimationFrame(checkController);
 
+}
 
-</div>
 
 
-
-
-
-
-</div>
-
-
-
-<script src="script.js"></script>
-
-</body>
-
-</html>
+checkController();
