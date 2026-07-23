@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Five Nights Custom</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+<div id="game">
+
+
+<h1>🌙 Five Nights Custom</h1>
+
+
+<!-- OFFICE -->
+
+<div id="office">
+
+<h2>Security Office</h2>
+
+
+<p id="time">
+12:00 AM
+</p>
+
+
+<p id="power">
+Power: 100%
+</p>
+
+
+
+<div id="screen">
+
+Office View
+
+</div>
+
+
+
+<div id="controls">
+
+<button onclick="openCamera()">
+📹 Cameras
+</button>
+
+
+<button onclick="toggleDoor()">
+🚪 Door
+</button>
+
+
+<button onclick="toggleLight()">
+💡 Light
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- CAMERA SYSTEM -->
+
+
+<div id="cameras">
+
+
+<h2>
+📹 Security Monitor
+</h2>
+
+
+
+<div id="cameraScreen">
+
+
+<h3 id="cameraName">
+
+CAM STAGE
+
+</h3>
+
+
+<div id="cameraImage">
+
+📺 Camera Feed
+
+</div>
+
+
+</div>
+
+
+
+
+
+<h3>
+Camera Map
+</h3>
+
+
+
+<div id="map">
+
+
+<button onclick="camera('stage')">
+CAM 1<br>
+Stage
+</button>
+
+
+<button onclick="camera('hall')">
+CAM 2<br>
+Hall
+</button>
+
+
+<button onclick="camera('office')">
+CAM 3<br>
+Office
+</button>
+
+
+</div>
+
+
+
+
+<button onclick="closeCamera()">
+
+⬅ Back
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
