@@ -1,148 +1,113 @@
-// 🎮 Controller Support for Five Nights Custom
+<!DOCTYPE html>
+<html>
 
-let controllerConnected = false;
+<head>
+    <title>School Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-let previousButtons = [];
 
-let activeController = null;
+<body>
 
 
+<div id="app">
 
-window.addEventListener("gamepadconnected", function(e){
 
-    controllerConnected = true;
+<header>
 
-    activeController = e.gamepad.index;
+    <h1>🏫 School Hub</h1>
 
-    previousButtons = [];
+    <p>Welcome back, Student</p>
 
-    console.log(
-        "Controller connected:",
-        e.gamepad.id
-    );
+</header>
 
-});
 
 
+<section class="news">
 
-window.addEventListener("gamepaddisconnected", function(e){
+    <h2>📢 Latest News</h2>
 
-    controllerConnected = false;
+    <div class="card">
 
-    activeController = null;
+        <h3>Welcome to our school app</h3>
 
-    previousButtons = [];
+        <p>
+        Find everything you need about school,
+        lessons, events and activities.
+        </p>
 
-    console.log(
-        "Controller disconnected"
-    );
+    </div>
 
-});
 
+</section>
 
 
 
 
-function buttonPressed(pad, button){
 
-    return (
-        pad.buttons[button] &&
-        pad.buttons[button].pressed &&
-        !previousButtons[button]
-    );
+<section class="buttons">
 
-}
 
+<button onclick="openPage('timetable')">
+📅 Timetable
+</button>
 
 
+<button onclick="openPage('subjects')">
+📚 Subjects
+</button>
 
 
+<button onclick="openPage('homework')">
+📝 Homework
+</button>
 
-function checkController(){
 
+<button onclick="openPage('events')">
+🎉 Events
+</button>
 
-    if(!controllerConnected){
 
-        requestAnimationFrame(checkController);
+<button onclick="openPage('staff')">
+👩‍🏫 Staff
+</button>
 
-        return;
 
-    }
+<button onclick="openPage('contact')">
+📞 Contact
+</button>
 
 
+</section>
 
-    let pad =
-    navigator.getGamepads()[activeController];
 
 
 
-    if(!pad){
 
-        requestAnimationFrame(checkController);
 
-        return;
+<div id="page">
 
-    }
 
+<h2>Select a section</h2>
 
+<p>
+Choose something above to view information.
+</p>
 
 
-    // A / Cross = Cameras
+</div>
 
-    if(buttonPressed(pad,0)){
 
-        openCamera();
 
-    }
 
+</div>
 
 
-    // B / Circle = Back
 
-    if(buttonPressed(pad,1)){
 
-        closeCamera();
+<script src="app.js"></script>
 
-    }
 
+</body>
 
-
-    // X / Square = Light
-
-    if(buttonPressed(pad,2)){
-
-        toggleLight();
-
-    }
-
-
-
-    // Y / Triangle = Door
-
-    if(buttonPressed(pad,3)){
-
-        toggleDoor();
-
-    }
-
-
-
-
-    previousButtons =
-    pad.buttons.map(
-        button => button.pressed
-    );
-
-
-
-    requestAnimationFrame(checkController);
-
-}
-
-
-
-checkController();
-
-<script src="script.js"></script>
-<script src="controller.js"></script>
-
+</html>
