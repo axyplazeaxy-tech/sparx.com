@@ -3,7 +3,7 @@
 
 <head>
 
-<title>School Hub</title>
+<title>School Hub Login</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -24,193 +24,35 @@
 
 <h1>Oakwood Academy</h1>
 
-<p>Welcome back, Student</p>
+<p>Student Portal</p>
 
 </header>
 
 
 
+<div class="card login">
 
 
-<section class="card profile">
-
-<h2>👤 Student Profile</h2>
-
-<p><strong>Name:</strong> Student Name</p>
-
-<p><strong>Year:</strong> Year 7</p>
-
-<p><strong>Status:</strong> Ready to learn ✅</p>
-
-</section>
+<h2>🔐 Login</h2>
 
 
+<input id="username" placeholder="Username">
 
 
+<input id="password" placeholder="Password" type="password">
 
 
-<section class="news">
+<button onclick="login()">
 
-<h2>📢 Announcements</h2>
+Login
 
-
-<div class="card">
-
-<h3>Welcome back!</h3>
-
-<p>
-Check the latest school news, events and activities.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>🏆 Sports Day</h3>
-
-<p>
-Sports day is coming soon.
-</p>
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section class="card">
-
-<h2>🎯 Clubs</h2>
-
-<p>⚽ Football Club</p>
-
-<p>🎮 Computing Club</p>
-
-<p>🎨 Art Club</p>
-
-<p>🔬 Science Club</p>
-
-</section>
-
-
-
-
-
-
-
-<section class="buttons">
-
-
-<button onclick="openPage('timetable')">
-📅 Timetable
 </button>
 
 
-<button onclick="openPage('subjects')">
-📚 Subjects
-</button>
-
-
-<button onclick="openPage('homework')">
-📝 Homework
-</button>
-
-
-<button onclick="openPage('events')">
-🎉 Events
-</button>
-
-
-<button onclick="openPage('staff')">
-👩‍🏫 Staff
-</button>
-
-
-<button onclick="openPage('contact')">
-📞 Contact
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-<div id="page">
-
-<h2>Welcome to School Hub</h2>
-
-<p>
-Choose a section above to get started.
-</p>
-
-</div>
-
-
-
-
-
-
-
-<div class="learn-more">
-
-
-<button onclick="openGames()">
-
-🎮 Learn More - Arcade
-
-</button>
+<p id="loginMessage"></p>
 
 
 </div>
-
-
-
-
-
-
-
-
-<nav class="nav-bar">
-
-
-<button onclick="location.reload()">
-🏠 Home
-</button>
-
-
-<button onclick="openPage('subjects')">
-📚 Lessons
-</button>
-
-
-<button onclick="openPage('events')">
-📅 Calendar
-</button>
-
-
-<button onclick="openGames()">
-🎮 Arcade
-</button>
-
-
-<button>
-👤 Profile
-</button>
-
-
-</nav>
-
-
 
 
 
