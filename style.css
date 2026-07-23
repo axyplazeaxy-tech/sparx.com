@@ -151,3 +151,51 @@ canvas {
     background:#eef4ff;
 
 }
+
+.nav-bar {
+
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+
+background:white;
+
+display:flex;
+justify-content:space-around;
+
+padding:10px;
+
+box-shadow:0 -3px 10px #0003;
+
+}
+
+
+.nav-bar button {
+
+font-size:14px;
+padding:10px;
+
+}
+
+
+body {
+
+padding-bottom:80px;
+
+}
+
+
+.school-logo {
+
+font-size:70px;
+text-align:center;
+
+}
+
+
+.profile {
+
+background:#eef4ff;
+
+}
