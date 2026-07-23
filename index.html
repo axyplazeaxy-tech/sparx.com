@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Five Nights Custom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+<h1>🌙 Five Nights Custom</h1>
+
+<div id="office">
+
+<h2>Security Office</h2>
+
+<p id="time">12:00 AM</p>
+<p id="power">Power: 100%</p>
+
+<div id="screen">
+    <p>Office Camera View</p>
+</div>
+
+<button onclick="openCamera()">
+📹 Cameras
+</button>
+
+<button onclick="toggleDoor()">
+🚪 Door
+</button>
+
+<button onclick="toggleLight()">
+💡 Light
+</button>
+
+</div>
+
+
+
+<div id="cameras">
+
+<h2>Cameras</h2>
+
+<button onclick="camera('stage')">
+Camera 1 - Stage
+</button>
+
+<button onclick="camera('hall')">
+Camera 2 - Hallway
+</button>
+
+<button onclick="camera('room')">
+Camera 3 - Room
+</button>
+
+<br>
+
+<button onclick="closeCamera()">
+⬅ Back
+</button>
+
+</div>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
