@@ -1,4 +1,4 @@
-// FIVE NIGHTS CUSTOM - COMPLETE GAME SCRIPT 🎮
+// FIVE NIGHTS CUSTOM - FIXED GAME SCRIPT 🎮
 
 
 // GAME VARIABLES
@@ -30,9 +30,50 @@ let animatronicRoom = "stage";
 
 
 
+// UPDATE UI
+
+function updateUI(){
+
+    let powerText =
+    document.getElementById("power");
+
+    let timeText =
+    document.getElementById("time");
+
+
+    if(powerText){
+
+        powerText.innerHTML =
+        "Power: "
+        + Math.floor(power)
+        + "%";
+
+    }
+
+
+    if(timeText){
+
+        let displayHour = hour;
+
+        if(displayHour >= 13){
+            displayHour -= 12;
+        }
+
+        timeText.innerHTML =
+        displayHour
+        + ":00 AM";
+
+    }
+
+}
+
+
+
+
+
 // POWER SYSTEM
 
-setInterval(() => {
+setInterval(()=>{
 
     if(gameOver) return;
 
@@ -91,8 +132,6 @@ setInterval(()=>{
 
         winGame();
 
-        return;
-
     }
 
 
@@ -100,47 +139,6 @@ setInterval(()=>{
 
 
 },30000);
-
-
-
-
-
-
-
-// UPDATE TEXT
-
-function updateUI(){
-
-
-    let powerText =
-    document.getElementById("power");
-
-
-    let timeText =
-    document.getElementById("time");
-
-
-
-    if(powerText){
-
-        powerText.innerHTML =
-        "Power: "
-        + Math.floor(power)
-        + "%";
-
-    }
-
-
-
-    if(timeText){
-
-        timeText.innerHTML =
-        hour
-        + ":00 AM";
-
-    }
-
-}
 
 
 
@@ -156,10 +154,19 @@ function openCamera(){
     cameraOpen = true;
 
 
-    document.getElementById("office").style.display="none";
+    let office =
+    document.getElementById("office");
 
-    document.getElementById("cameras").style.display="block";
+    let cameras =
+    document.getElementById("cameras");
 
+
+    if(office)
+        office.style.display="none";
+
+
+    if(cameras)
+        cameras.style.display="block";
 
 }
 
@@ -171,30 +178,38 @@ function closeCamera(){
     cameraOpen = false;
 
 
-    document.getElementById("office").style.display="block";
+    let office =
+    document.getElementById("office");
 
-    document.getElementById("cameras").style.display="none";
+    let cameras =
+    document.getElementById("cameras");
 
+
+    if(office)
+        office.style.display="block";
+
+
+    if(cameras)
+        cameras.style.display="none";
 
 }
 
 
 
 
-function camera(room){
 
+
+function camera(room){
 
     let name =
     document.getElementById("cameraName");
-
 
     let image =
     document.getElementById("cameraImage");
 
 
-
     if(!name || !image)
-    return;
+        return;
 
 
 
@@ -204,9 +219,7 @@ function camera(room){
 
 
 
-
     if(animatronicRoom === room){
-
 
         image.innerHTML =
 
@@ -218,14 +231,11 @@ function camera(room){
         <br>
 
         ⚠️ MOVEMENT DETECTED
-
         `;
-
 
     }
 
     else{
-
 
         image.innerHTML =
 
@@ -235,9 +245,7 @@ function camera(room){
         Signal stable
         `;
 
-
     }
-
 
 }
 
@@ -249,36 +257,25 @@ function camera(room){
 
 // DOOR
 
-
 function toggleDoor(){
 
-
-    doorClosed =
-    !doorClosed;
-
+    doorClosed = !doorClosed;
 
 
     let screen =
     document.getElementById("screen");
 
 
-
     if(screen){
 
-
         screen.innerHTML =
-
-        doorClosed ?
-
+        doorClosed
+        ?
         "🚪 DOOR CLOSED"
-
         :
-
         "🚪 DOOR OPEN";
 
-
     }
-
 
 }
 
@@ -290,36 +287,25 @@ function toggleDoor(){
 
 // LIGHT
 
-
 function toggleLight(){
 
-
-    lightOn =
-    !lightOn;
-
+    lightOn = !lightOn;
 
 
     let screen =
     document.getElementById("screen");
 
 
-
     if(screen){
 
-
         screen.innerHTML =
-
-        lightOn ?
-
+        lightOn
+        ?
         "💡 LIGHT ON"
-
         :
-
         "💡 LIGHT OFF";
 
-
     }
-
 
 }
 
@@ -329,41 +315,28 @@ function toggleLight(){
 
 
 
-// ANIMATRONIC AI 👾
-
+// ANIMATRONIC AI
 
 setInterval(()=>{
 
 
     if(gameOver)
-    return;
+        return;
 
 
-
-    let chance =
-    Math.random();
+    if(Math.random() < animatronicLevel / 10){
 
 
-
-    if(chance < animatronicLevel / 10){
-
-
-
-        if(animatronicPosition <
-        animatronicPath.length - 1){
-
+        if(animatronicPosition < animatronicPath.length - 1){
 
             animatronicPosition++;
 
-
         }
-
 
         else{
 
 
             if(doorClosed){
-
 
                 console.log(
                 "Animatronic blocked"
@@ -372,38 +345,29 @@ setInterval(()=>{
 
                 animatronicPosition = 1;
 
-
             }
 
-
             else{
-
 
                 loseGame(
                 "The animatronic reached you!"
                 );
 
-
                 return;
-
 
             }
 
-
         }
-
 
 
         animatronicRoom =
         animatronicPath[animatronicPosition];
 
 
-
         console.log(
-        "Animatronic location:",
+        "Animatronic:",
         animatronicRoom
         );
-
 
     }
 
@@ -416,9 +380,7 @@ setInterval(()=>{
 
 
 
-
 // KEYBOARD CONTROLS
-
 
 document.addEventListener(
 "keydown",
@@ -449,12 +411,10 @@ function(e){
 
 
 
-
 // GAME END
 
 
 function loseGame(reason){
-
 
     gameOver = true;
 
@@ -462,20 +422,14 @@ function loseGame(reason){
     document.body.innerHTML =
 
     `
-
-    <h1>GAME OVER</h1>
+    <h1>😱 GAME OVER</h1>
 
     <h2>${reason}</h2>
 
-
     <button onclick="location.reload()">
-
     Restart
-
     </button>
-
     `;
-
 
 }
 
@@ -483,9 +437,7 @@ function loseGame(reason){
 
 
 
-
 function winGame(){
-
 
     gameOver = true;
 
@@ -493,19 +445,13 @@ function winGame(){
     document.body.innerHTML =
 
     `
-
-    <h1>6:00 AM</h1>
+    <h1>🎉 6:00 AM</h1>
 
     <h2>You survived the night!</h2>
 
-
     <button onclick="location.reload()">
-
     Play Again
-
     </button>
-
     `;
-
 
 }
