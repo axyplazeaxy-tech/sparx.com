@@ -1,14 +1,18 @@
-// SCHOOL HUB APP
+// SCHOOL HUB APP + SCHOOL ARCADE 🎮
 
+
+// SCHOOL PAGES
 
 function openPage(page){
 
     let area = document.getElementById("page");
 
+    if(!area) return;
 
-    if(page === "timetable"){
 
-        area.innerHTML = `
+    let pages = {
+
+        timetable: `
         <h2>📅 Timetable</h2>
         <p>
         Monday:<br>
@@ -16,14 +20,9 @@ function openPage(page){
         Science<br>
         English<br>
         PE
-        </p>`;
+        </p>`,
 
-    }
-
-
-    if(page === "subjects"){
-
-        area.innerHTML = `
+        subjects: `
         <h2>📚 Subjects</h2>
         <p>
         Maths<br>
@@ -32,58 +31,43 @@ function openPage(page){
         Computing<br>
         Art<br>
         Languages
-        </p>`;
+        </p>`,
 
-    }
-
-
-    if(page === "homework"){
-
-        area.innerHTML = `
+        homework: `
         <h2>📝 Homework</h2>
-        <p>No new homework today.</p>`;
+        <p>
+        No new homework today.
+        </p>`,
 
-    }
-
-
-    if(page === "events"){
-
-        area.innerHTML = `
+        events: `
         <h2>🎉 Events</h2>
         <p>
         School trips<br>
         Sports day<br>
         Clubs<br>
         Assemblies
-        </p>`;
+        </p>`,
 
-    }
-
-
-    if(page === "staff"){
-
-        area.innerHTML = `
+        staff: `
         <h2>👩‍🏫 Staff</h2>
         <p>
         Headteacher<br>
         Maths Department<br>
         Science Department<br>
         Student Support
-        </p>`;
+        </p>`,
 
-    }
-
-
-    if(page === "contact"){
-
-        area.innerHTML = `
+        contact: `
         <h2>📞 Contact</h2>
         <p>
         Email: school@example.com<br>
         Phone: 0000 000000
-        </p>`;
+        </p>`
 
-    }
+    };
+
+
+    area.innerHTML = pages[page];
 
 }
 
@@ -93,11 +77,9 @@ function openPage(page){
 
 
 
-// SCHOOL ARCADE MENU 🎮
-
+// ARCADE MENU 🎮
 
 function openGames(){
-
 
 document.body.innerHTML = `
 
@@ -108,7 +90,7 @@ document.body.innerHTML = `
 
 <h1>🎮 School Arcade</h1>
 
-<p>Choose a game to play!</p>
+<p>Choose a game!</p>
 
 </header>
 
@@ -128,20 +110,17 @@ document.body.innerHTML = `
 </button>
 
 
-
-<button>
+<button onclick="startPong()">
 🏓 Pong
 </button>
 
 
-
-<button>
+<button onclick="startShooter()">
 🚀 Space Shooter
 </button>
 
 
-
-<button>
+<button onclick="startBreakout()">
 🧱 Breakout
 </button>
 
@@ -150,15 +129,10 @@ document.body.innerHTML = `
 
 
 
-<div class="card">
-
-<h2>🕹️ Retro Zone</h2>
-
-<p>
-Classic games made for School Hub.
-</p>
-
-</div>
+<canvas id="gameCanvas"
+width="400"
+height="400">
+</canvas>
 
 
 
@@ -174,9 +148,7 @@ Classic games made for School Hub.
 
 
 
-
-// SNAKE GAME 🐍
-
+// SNAKE 🐍
 
 function startSnake(){
 
@@ -184,68 +156,48 @@ function startSnake(){
 let canvas =
 document.getElementById("gameCanvas");
 
-
-if(!canvas){
-
-document.body.innerHTML += `
-<canvas id="gameCanvas" width="400" height="400"></canvas>
-`;
-
-canvas =
-document.getElementById("gameCanvas");
-
-}
-
-
-
 let ctx =
 canvas.getContext("2d");
 
 
 
-let snake = [
+let snake=[
 {x:200,y:200}
 ];
 
 
-let food = {
+let food={
 x:100,
 y:100
 };
 
 
-
-let dx = 20;
-let dy = 0;
-
+let dx=20;
+let dy=0;
 
 
-document.onkeydown = function(e){
 
+document.onkeydown=function(e){
 
-if(e.key==="ArrowUp"){
+if(e.key=="ArrowUp"){
 dx=0;
 dy=-20;
 }
 
-
-if(e.key==="ArrowDown"){
+if(e.key=="ArrowDown"){
 dx=0;
 dy=20;
 }
 
-
-if(e.key==="ArrowLeft"){
+if(e.key=="ArrowLeft"){
 dx=-20;
 dy=0;
 }
 
-
-if(e.key==="ArrowRight"){
+if(e.key=="ArrowRight"){
 dx=20;
 dy=0;
 }
-
 
 };
 
@@ -253,93 +205,15 @@ dy=0;
 
 
 
-// TOUCH CONTROLS 📱
-
-
-let startX = 0;
-let startY = 0;
-
-
-
-canvas.addEventListener("touchstart",e=>{
-
-startX=e.touches[0].clientX;
-startY=e.touches[0].clientY;
-
-});
-
-
-
-canvas.addEventListener("touchend",e=>{
-
-
-let endX=e.changedTouches[0].clientX;
-let endY=e.changedTouches[0].clientY;
-
-
-let x=endX-startX;
-let y=endY-startY;
-
-
-
-if(Math.abs(x)>Math.abs(y)){
-
-
-if(x>0){
-
-dx=20;
-dy=0;
-
-}else{
-
-dx=-20;
-dy=0;
-
-}
-
-
-}else{
-
-
-if(y>0){
-
-dx=0;
-dy=20;
-
-}else{
-
-dx=0;
-dy=-20;
-
-}
-
-
-}
-
-
-});
-
-
-
-
-
-
-function loop(){
+function game(){
 
 
 ctx.fillStyle="black";
-
-ctx.fillRect(
-0,
-0,
-400,
-400
-);
+ctx.fillRect(0,0,400,400);
 
 
 
 ctx.fillStyle="lime";
-
 
 snake.forEach(part=>{
 
@@ -366,31 +240,23 @@ food.y,
 
 
 let head={
-
 x:snake[0].x+dx,
-
 y:snake[0].y+dy
-
 };
-
 
 
 snake.unshift(head);
 
 
 
-if(head.x===food.x && head.y===food.y){
-
+if(head.x==food.x && head.y==food.y){
 
 food.x=Math.floor(Math.random()*20)*20;
 food.y=Math.floor(Math.random()*20)*20;
 
-
 }else{
 
-
 snake.pop();
-
 
 }
 
@@ -403,22 +269,46 @@ head.x>=400 ||
 head.y>=400
 ){
 
-alert("Game Over!");
+alert("Game Over");
 location.reload();
 return;
 
 }
 
 
+requestAnimationFrame(game);
 
-requestAnimationFrame(loop);
+}
 
+
+game();
 
 }
 
 
 
-loop();
 
+
+
+
+// PLACEHOLDER GAMES
+
+function startPong(){
+
+alert("🏓 Pong coming soon!");
+
+}
+
+
+function startShooter(){
+
+alert("🚀 Space Shooter coming soon!");
+
+}
+
+
+function startBreakout(){
+
+alert("🧱 Breakout coming soon!");
 
 }
