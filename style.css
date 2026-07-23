@@ -1,0 +1,402 @@
+body {
+
+    margin:0;
+
+    background:#000;
+
+    color:white;
+
+    font-family:monospace;
+
+    text-align:center;
+
+}
+
+
+
+#game {
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+    circle,
+    #222,
+    #000
+    );
+
+    padding-top:20px;
+
+}
+
+
+
+h1 {
+
+    color:#ddd;
+
+    text-shadow:
+    0 0 15px red;
+
+}
+
+
+
+#office,
+#cameras {
+
+    width:90%;
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:#080808;
+
+    border:3px solid #555;
+
+    padding:20px;
+
+    border-radius:15px;
+
+}
+
+
+
+
+
+#screen {
+
+
+height:280px;
+
+
+background:
+
+linear-gradient(
+#333,
+#000
+);
+
+
+border:3px solid #777;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+font-size:28px;
+
+
+margin:20px;
+
+
+}
+
+
+
+
+
+button {
+
+
+background:#151515;
+
+
+color:white;
+
+
+border:2px solid #777;
+
+
+padding:15px;
+
+
+margin:8px;
+
+
+font-size:18px;
+
+
+border-radius:10px;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+
+
+button:hover {
+
+
+background:#444;
+
+
+}
+
+
+
+
+
+#cameras {
+
+
+display:none;
+
+
+}
+
+
+
+
+
+#cameraScreen {
+
+
+height:320px;
+
+
+background:black;
+
+
+border:4px solid #777;
+
+
+position:relative;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+
+
+#cameraName {
+
+
+color:#aaa;
+
+
+}
+
+
+
+
+
+#cameraImage {
+
+
+height:230px;
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+font-size:28px;
+
+
+position:relative;
+
+
+}
+
+
+
+
+
+/* TV STATIC EFFECT */
+
+
+#cameraImage::after {
+
+
+content:"";
+
+
+position:absolute;
+
+
+inset:0;
+
+
+background:
+
+
+repeating-linear-gradient(
+
+0deg,
+
+rgba(255,255,255,.08),
+
+transparent 3px
+
+);
+
+
+pointer-events:none;
+
+
+}
+
+
+
+
+
+/* MAP */
+
+
+#map {
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+flex-wrap:wrap;
+
+
+}
+
+
+
+
+
+#map button {
+
+
+width:130px;
+
+
+}
+
+
+
+
+
+/* ANIMATRONIC */
+
+
+#animatronic {
+
+
+width:140px;
+
+
+height:170px;
+
+
+background:#222;
+
+
+border:4px solid #666;
+
+
+border-radius:25px;
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+font-size:60px;
+
+
+box-shadow:
+
+0 0 20px red;
+
+
+animation:glitch .25s infinite;
+
+
+}
+
+
+
+
+
+@keyframes glitch {
+
+
+0%{
+
+transform:translateX(0);
+
+}
+
+
+50%{
+
+transform:translateX(5px);
+
+}
+
+
+100%{
+
+transform:translateX(0);
+
+}
+
+
+}
+
+
+
+
+
+
+/* PHONE SUPPORT */
+
+
+@media(max-width:600px){
+
+
+button{
+
+
+width:90%;
+
+
+font-size:22px;
+
+
+}
+
+
+
+#screen,
+#cameraScreen{
+
+
+height:220px;
+
+
+}
+
+
+}
