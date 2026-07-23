@@ -163,3 +163,98 @@ button:hover {
     z-index:2;
 
 }
+
+/* Animatronic Camera Appearance */
+
+#animatronic {
+
+    width:140px;
+    height:180px;
+
+    background:
+    linear-gradient(
+        #444,
+        #111
+    );
+
+    border:4px solid #666;
+
+    border-radius:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:60px;
+
+    color:red;
+
+    box-shadow:
+    0 0 20px red;
+
+    animation:
+    glitch 0.3s infinite;
+
+}
+
+
+
+@keyframes glitch {
+
+0%{
+transform:translateX(0);
+}
+
+
+25%{
+transform:translateX(3px);
+}
+
+
+50%{
+transform:translateX(-3px);
+}
+
+
+100%{
+transform:translateX(0);
+}
+
+}
+
+
+
+/* Camera static */
+
+#cameraImage {
+
+    min-height:200px;
+
+    font-family:monospace;
+
+    color:white;
+
+}
+
+
+#cameraImage::after {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.08),
+    transparent 3px
+    );
+
+    pointer-events:none;
+
+}
