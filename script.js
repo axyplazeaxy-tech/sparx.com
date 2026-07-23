@@ -317,7 +317,23 @@ lightOn ?
 
 
 
-// ANIMATRONIC AI
+// ADVANCED ANIMATRONIC AI 👾
+
+let animatronicLevel = 3; 
+// Higher number = harder
+
+
+let animatronicPath = [
+
+    "stage",
+    "hall",
+    "office"
+
+];
+
+
+let animatronicPosition = 0;
+
 
 
 setInterval(()=>{
@@ -333,102 +349,71 @@ Math.random();
 
 
 
-if(chance < 0.5){
+if(chance < animatronicLevel / 10){
 
 
 
-let current =
-rooms.indexOf(animatronicRoom);
+    // Move forward
+
+    if(animatronicPosition < animatronicPath.length - 1){
+
+        animatronicPosition++;
+
+    }
+
+
+    else{
+
+
+        // At office
+
+        if(doorClosed){
+
+
+            console.log(
+            "Animatronic blocked by door"
+            );
+
+
+            // move away
+
+            animatronicPosition = 1;
+
+
+        }
+
+
+        else{
+
+
+            loseGame(
+            "The animatronic reached you!"
+            );
+
+
+        }
+
+
+    }
 
 
 
-if(current < rooms.length-1){
-
-animatronicRoom =
-rooms[current+1];
-
-}
-
-else{
-
-animatronicRoom =
-rooms[0];
-
-}
+    animatronicRoom =
+    animatronicPath[animatronicPosition];
 
 
 
-console.log(
-"Animatronic:",
-animatronicRoom
-);
+    console.log(
+    "Animatronic moved to:",
+    animatronicRoom
+    );
 
-
-}
-
-
-
-},8000);
-
-
-
-
-
-
-
-
-
-// KEYBOARD CONTROLS
-
-
-document.addEventListener(
-"keydown",
-function(e){
-
-
-if(e.key.toLowerCase()=="c"){
-
-openCamera();
-
-}
-
-
-
-if(e.key.toLowerCase()=="d"){
-
-toggleDoor();
 
 }
 
 
 
-if(e.key.toLowerCase()=="l"){
-
-toggleLight();
-
-}
-
-
-
-if(e.key=="Escape"){
-
-closeCamera();
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-
-
-// GAME END
+},10000);
 
 
 function loseGame(reason){
