@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sparx</title>
+    <title>Sparx Arcade</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <h1>SPARX</h1>
+    <h1>⚡ SPARX</h1>
     <p>Learning made smarter</p>
 </header>
 
@@ -17,72 +17,90 @@
 
     <div class="card">
         <h2>📘 Sparx Maths</h2>
-        <p>
-            Sparx Maths helps students improve their maths skills
-            with personalised practice and challenging questions.
-        </p>
+        <p>Improve your maths skills with practice.</p>
     </div>
-
 
     <div class="card">
         <h2>🔬 Sparx Science</h2>
-        <p>
-            Sparx Science helps students learn science topics
-            through engaging activities and revision.
-        </p>
+        <p>Explore science and discover new things.</p>
     </div>
-
 
     <div class="card">
         <h2>📖 Sparx Reader</h2>
-        <p>
-            Sparx Reader helps students build reading skills
-            with guided reading practice.
-        </p>
+        <p>Build reading skills and vocabulary.</p>
     </div>
 
 </section>
 
 
-<button onclick="openGames()" class="more">
-    More Info
+<button class="more" onclick="openGames()">
+    🎮 Open Sparx Arcade
 </button>
 
 
 
-<!-- FULL SCREEN ARCADE -->
-
 <div id="arcade">
 
-    <h1>🎮 Sparx Arcade</h1>
+    <h1>🕹️ SPARX ARCADE</h1>
 
-    <p>Choose a game</p>
-
-
-    <button onclick="startGame('flappy')">
-        🐦 Flappy Sparx
-    </button>
+    <p>Select a game</p>
 
 
-    <button onclick="startGame('snake')">
-        🐍 Snake
-    </button>
+    <div id="gameMenu">
+
+        <button onclick="startGame('flappy')">
+            🐦 Flappy Sparx
+        </button>
+
+        <button onclick="startGame('snake')">
+            🐍 Snake
+        </button>
+
+        <button onclick="startGame('pong')">
+            🏓 Pong
+        </button>
+
+        <button onclick="startGame('breakout')">
+            🧱 Breakout
+        </button>
+
+        <button onclick="startGame('space')">
+            🚀 Space Defender
+        </button>
+
+        <button onclick="startGame('racer')">
+            🏎️ Pixel Racer
+        </button>
+
+        <button onclick="startGame('runner')">
+            🏃 Endless Runner
+        </button>
+
+        <button onclick="startGame('target')">
+            🎯 Target Blaster
+        </button>
+
+    </div>
 
 
-    <button onclick="startGame('night')">
-        👻 Night Survival
-    </button>
+    <canvas id="gameCanvas" width="500" height="400"></canvas>
 
 
-    <canvas id="gameCanvas"></canvas>
+    <div id="touchControls">
+
+        <button onclick="move('left')">⬅️</button>
+        <button onclick="move('up')">⬆️</button>
+        <button onclick="move('down')">⬇️</button>
+        <button onclick="move('right')">➡️</button>
+
+    </div>
 
 
-    <button onclick="closeGames()" class="back">
+    <button class="back" onclick="closeGames()">
         ← Back
     </button>
 
 </div>
-
 
 
 <script src="script.js"></script>
