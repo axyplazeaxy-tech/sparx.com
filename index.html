@@ -1,78 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sparx</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-    <h1>SPARX</h1>
-    <p>Learning made smarter</p>
-</header>
-
-<section class="cards">
-
-    <div class="card">
-        <h2>📘 Sparx Maths</h2>
-        <p>
-            Sparx Maths helps students improve their maths skills
-            with personalised practice and challenging questions.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>🔬 Sparx Science</h2>
-        <p>
-            Sparx Science helps students explore science topics
-            through engaging learning and activities.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>📖 Sparx Reader</h2>
-        <p>
-            Sparx Reader helps build reading skills through
-            guided practice and progress tracking.
-        </p>
-    </div>
-
-</section>
-
-<button onclick="openGames()" class="more">
-    More Info
-</button>
-
-
 <div id="arcade">
 
     <h1>🎮 Sparx Arcade</h1>
 
-    <button onclick="game('Flappy Sparx')">
-        Flappy Sparx
-    </button>
+    <button onclick="startGame('flappy')">🐦 Flappy Sparx</button>
+    <button onclick="startGame('snake')">🐍 Snake</button>
+    <button onclick="startGame('night')">👻 Night Survival</button>
 
-    <button onclick="game('Snake')">
-        Snake
-    </button>
+    <canvas id="gameCanvas"></canvas>
 
-    <button onclick="game('Racing Game')">
-        Racing Game
-    </button>
-
-    <button onclick="game('Night Survival')">
-        Night Survival
-    </button>
-
-    <button onclick="closeGames()" class="back">
-        ← Back
-    </button>
+    <button onclick="closeGames()" class="back">← Back</button>
 
 </div>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
