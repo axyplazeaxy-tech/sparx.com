@@ -1,5 +1,7 @@
-// FIVE NIGHTS CUSTOM - COMPLETE SCRIPT
+// FIVE NIGHTS CUSTOM - COMPLETE GAME SCRIPT 🎮
 
+
+// GAME VARIABLES
 
 let power = 100;
 let hour = 12;
@@ -11,14 +13,20 @@ let cameraOpen = false;
 let gameOver = false;
 
 
-// Animatronic location
-let animatronicRoom = "stage";
+// ANIMATRONIC
 
-let rooms = [
+let animatronicLevel = 3;
+
+let animatronicPath = [
     "stage",
     "hall",
     "office"
 ];
+
+let animatronicPosition = 0;
+
+let animatronicRoom = "stage";
+
 
 
 
@@ -52,18 +60,17 @@ setInterval(() => {
 
         power = 0;
 
-        loseGame(
-        "Power ran out..."
-        );
+        loseGame("Power ran out!");
 
     }
 
 
-
-    updateText();
+    updateUI();
 
 
 },1000);
+
+
 
 
 
@@ -74,9 +81,7 @@ setInterval(() => {
 setInterval(()=>{
 
 
-    if(gameOver)
-        return;
-
+    if(gameOver) return;
 
 
     hour++;
@@ -86,11 +91,12 @@ setInterval(()=>{
 
         winGame();
 
+        return;
+
     }
 
 
-    updateText();
-
+    updateUI();
 
 
 },30000);
@@ -101,29 +107,38 @@ setInterval(()=>{
 
 
 
-function updateText(){
+// UPDATE TEXT
+
+function updateUI(){
 
 
-let powerText =
-document.getElementById("power");
+    let powerText =
+    document.getElementById("power");
 
 
-let timeText =
-document.getElementById("time");
-
-
-if(powerText)
-powerText.innerHTML =
-"Power: "
-+ Math.floor(power)
-+ "%";
+    let timeText =
+    document.getElementById("time");
 
 
 
-if(timeText)
-timeText.innerHTML =
-hour + ":00 AM";
+    if(powerText){
 
+        powerText.innerHTML =
+        "Power: "
+        + Math.floor(power)
+        + "%";
+
+    }
+
+
+
+    if(timeText){
+
+        timeText.innerHTML =
+        hour
+        + ":00 AM";
+
+    }
 
 }
 
@@ -138,23 +153,12 @@ hour + ":00 AM";
 
 function openCamera(){
 
-cameraOpen=true;
+    cameraOpen = true;
 
 
-let office =
-document.getElementById("office");
+    document.getElementById("office").style.display="none";
 
-
-let cameras =
-document.getElementById("cameras");
-
-
-if(office)
-office.style.display="none";
-
-
-if(cameras)
-cameras.style.display="block";
+    document.getElementById("cameras").style.display="block";
 
 
 }
@@ -164,18 +168,15 @@ cameras.style.display="block";
 
 function closeCamera(){
 
-cameraOpen=false;
+    cameraOpen = false;
 
 
-document.getElementById("office").style.display="block";
+    document.getElementById("office").style.display="block";
 
-document.getElementById("cameras").style.display="none";
+    document.getElementById("cameras").style.display="none";
 
 
 }
-
-
-
 
 
 
@@ -183,68 +184,62 @@ document.getElementById("cameras").style.display="none";
 function camera(room){
 
 
-let name =
-document.getElementById("cameraName");
+    let name =
+    document.getElementById("cameraName");
 
 
-let image =
-document.getElementById("cameraImage");
-
-
-
-if(!image)
-return;
+    let image =
+    document.getElementById("cameraImage");
 
 
 
-name.innerHTML =
-"CAM: "
-+ room.toUpperCase();
+    if(!name || !image)
+    return;
+
+
+
+    name.innerHTML =
+    "CAM: "
+    + room.toUpperCase();
 
 
 
 
-if(animatronicRoom === room){
+    if(animatronicRoom === room){
 
 
-image.innerHTML =
+        image.innerHTML =
 
-`
-<div id="animatronic">
+        `
+        <div id="animatronic">
+        👁️
+        </div>
 
-👁️
+        <br>
 
-</div>
+        ⚠️ MOVEMENT DETECTED
 
-<br>
-
-⚠️ MOVEMENT DETECTED
-
-`;
-
-}
+        `;
 
 
-else{
+    }
+
+    else{
 
 
-image.innerHTML =
+        image.innerHTML =
 
-`
-📺 Empty room
-
-<br>
-
-Signal stable
-
-`;
+        `
+        📺 Empty room
+        <br>
+        Signal stable
+        `;
 
 
-}
+    }
 
 
 }
-
 
 
 
@@ -258,22 +253,31 @@ Signal stable
 function toggleDoor(){
 
 
-doorClosed =
-!doorClosed;
+    doorClosed =
+    !doorClosed;
 
 
 
-document.getElementById("screen").innerHTML =
+    let screen =
+    document.getElementById("screen");
 
 
-doorClosed ?
 
-"🚪 DOOR CLOSED"
+    if(screen){
 
-:
 
-"🚪 DOOR OPEN";
+        screen.innerHTML =
 
+        doorClosed ?
+
+        "🚪 DOOR CLOSED"
+
+        :
+
+        "🚪 DOOR OPEN";
+
+
+    }
 
 
 }
@@ -290,21 +294,31 @@ doorClosed ?
 function toggleLight(){
 
 
-lightOn =
-!lightOn;
+    lightOn =
+    !lightOn;
 
 
 
-document.getElementById("screen").innerHTML =
+    let screen =
+    document.getElementById("screen");
 
 
-lightOn ?
 
-"💡 LIGHT ON"
+    if(screen){
 
-:
 
-"💡 LIGHT OFF";
+        screen.innerHTML =
+
+        lightOn ?
+
+        "💡 LIGHT ON"
+
+        :
+
+        "💡 LIGHT OFF";
+
+
+    }
 
 
 }
@@ -315,69 +329,31 @@ lightOn ?
 
 
 
-
-
-// ADVANCED ANIMATRONIC AI 👾
-
-let animatronicLevel = 3; 
-// Higher number = harder
-
-
-let animatronicPath = [
-
-    "stage",
-    "hall",
-    "office"
-
-];
-
-
-let animatronicPosition = 0;
-
+// ANIMATRONIC AI 👾
 
 
 setInterval(()=>{
 
 
-if(gameOver)
-return;
+    if(gameOver)
+    return;
 
 
 
-let chance =
-Math.random();
+    let chance =
+    Math.random();
 
 
 
-if(chance < animatronicLevel / 10){
+    if(chance < animatronicLevel / 10){
 
 
 
-    // Move forward
-
-    if(animatronicPosition < animatronicPath.length - 1){
-
-        animatronicPosition++;
-
-    }
+        if(animatronicPosition <
+        animatronicPath.length - 1){
 
 
-    else{
-
-
-        // At office
-
-        if(doorClosed){
-
-
-            console.log(
-            "Animatronic blocked by door"
-            );
-
-
-            // move away
-
-            animatronicPosition = 1;
+            animatronicPosition++;
 
 
         }
@@ -386,58 +362,119 @@ if(chance < animatronicLevel / 10){
         else{
 
 
-            loseGame(
-            "The animatronic reached you!"
-            );
+            if(doorClosed){
+
+
+                console.log(
+                "Animatronic blocked"
+                );
+
+
+                animatronicPosition = 1;
+
+
+            }
+
+
+            else{
+
+
+                loseGame(
+                "The animatronic reached you!"
+                );
+
+
+                return;
+
+
+            }
 
 
         }
 
 
+
+        animatronicRoom =
+        animatronicPath[animatronicPosition];
+
+
+
+        console.log(
+        "Animatronic location:",
+        animatronicRoom
+        );
+
+
     }
-
-
-
-    animatronicRoom =
-    animatronicPath[animatronicPosition];
-
-
-
-    console.log(
-    "Animatronic moved to:",
-    animatronicRoom
-    );
-
-
-}
-
 
 
 },10000);
 
 
+
+
+
+
+
+
+// KEYBOARD CONTROLS
+
+
+document.addEventListener(
+"keydown",
+function(e){
+
+
+    if(e.key.toLowerCase()=="c")
+        openCamera();
+
+
+    if(e.key.toLowerCase()=="d")
+        toggleDoor();
+
+
+    if(e.key.toLowerCase()=="l")
+        toggleLight();
+
+
+    if(e.key=="Escape")
+        closeCamera();
+
+
+});
+
+
+
+
+
+
+
+
+// GAME END
+
+
 function loseGame(reason){
 
 
-gameOver=true;
+    gameOver = true;
 
 
+    document.body.innerHTML =
 
-document.body.innerHTML =
+    `
 
-`
+    <h1>GAME OVER</h1>
 
-<h1>GAME OVER</h1>
+    <h2>${reason}</h2>
 
-<h2>${reason}</h2>
 
-<button onclick="location.reload()">
+    <button onclick="location.reload()">
 
-Restart
+    Restart
 
-</button>
+    </button>
 
-`;
+    `;
 
 
 }
@@ -450,25 +487,25 @@ Restart
 function winGame(){
 
 
-gameOver=true;
+    gameOver = true;
 
 
+    document.body.innerHTML =
 
-document.body.innerHTML =
+    `
 
-`
+    <h1>6:00 AM</h1>
 
-<h1>6:00 AM</h1>
-
-<h2>You survived!</h2>
+    <h2>You survived the night!</h2>
 
 
-<button onclick="location.reload()">
+    <button onclick="location.reload()">
 
-Play Again
+    Play Again
 
-</button>
+    </button>
 
-`;
+    `;
+
 
 }
