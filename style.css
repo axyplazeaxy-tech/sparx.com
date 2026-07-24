@@ -1,161 +1,81 @@
-body {
-
-    margin:0;
-    background:#f2f5f8;
-    color:#222;
-    font-family:Arial, sans-serif;
-    padding-bottom:90px;
-
-}
+/* 🏫 SCHOOL HUB PRO */
 
 
-#app {
+*{
 
-    max-width:900px;
-    margin:auto;
-    min-height:100vh;
-    background:white;
-    padding:20px;
+box-sizing:border-box;
 
 }
 
 
+body{
 
-header {
+margin:0;
 
-    background:#164a8a;
-    color:white;
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
+font-family:Arial,sans-serif;
 
-}
+background:#f2f5f8;
 
+color:#222;
 
-
-header h1 {
-
-    margin:0;
-    font-size:35px;
-
-}
-
-
-
-.school-logo {
-
-    font-size:70px;
-
-}
-
-
-
-.card {
-
-    background:white;
-    margin-top:20px;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 4px 10px #0002;
-
-}
-
-
-
-.profile {
-
-    background:#eef4ff;
-
-}
-
-
-
-.announcement {
-
-    background:#eef4ff;
-    padding:15px;
-    border-radius:10px;
-    margin-top:10px;
-
-}
-
-
-
-input {
-
-    display:block;
-    width:90%;
-    max-width:400px;
-
-    margin:12px auto;
-
-    padding:15px;
-
-    border-radius:10px;
-
-    border:2px solid #ccc;
-
-    font-size:17px;
+transition:0.3s;
 
 }
 
 
 
 
-button {
+#loading{
 
-    background:#164a8a;
+position:fixed;
 
-    color:white;
+inset:0;
 
-    border:none;
+background:#164a8a;
 
-    padding:15px 20px;
+color:white;
 
-    border-radius:10px;
+display:flex;
 
-    font-size:17px;
+justify-content:center;
 
-    cursor:pointer;
+align-items:center;
 
-}
+flex-direction:column;
 
+font-size:30px;
 
+z-index:999;
 
-button:hover {
-
-    background:#0e3566;
-
-}
-
-
-
-.buttons {
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:20px;
+animation:load 2s forwards;
 
 }
 
 
 
+@keyframes load{
 
-#page {
+0%{
 
-    margin-top:20px;
+opacity:1;
 
-    padding:20px;
+}
 
-    background:#eef4ff;
 
-    border-radius:15px;
+80%{
+
+opacity:1;
+
+}
+
+
+100%{
+
+opacity:0;
+
+visibility:hidden;
+
+}
 
 }
 
@@ -163,49 +83,14 @@ button:hover {
 
 
 
-.learn-more {
 
-    text-align:center;
+#app{
 
-    margin-top:30px;
+max-width:1000px;
 
-}
+margin:auto;
 
-
-
-
-.nav-bar {
-
-    position:fixed;
-
-    bottom:0;
-
-    left:0;
-
-    right:0;
-
-
-    background:white;
-
-    display:flex;
-
-    justify-content:space-around;
-
-
-    padding:10px;
-
-
-    box-shadow:0 -3px 10px #0003;
-
-}
-
-
-
-.nav-bar button {
-
-    font-size:13px;
-
-    padding:10px;
+padding:20px;
 
 }
 
@@ -213,29 +98,287 @@ button:hover {
 
 
 
-canvas {
+header{
 
-    display:block;
+background:#164a8a;
 
-    margin:20px auto;
+color:white;
 
-    background:black;
+padding:30px;
 
-    border:5px solid #164a8a;
+border-radius:20px;
 
-    border-radius:10px;
+text-align:center;
 
-    max-width:95%;
+transition:.3s;
+
+}
+
+
+
+
+.school-logo{
+
+font-size:70px;
 
 }
 
 
 
-.game-buttons {
 
-    text-align:center;
+
+.card{
+
+background:white;
+
+padding:20px;
+
+margin-top:20px;
+
+border-radius:20px;
+
+box-shadow:0 5px 15px #0003;
+
+transition:.3s;
 
 }
+
+
+
+
+
+.profile{
+
+background:#eef4ff;
+
+}
+
+
+
+
+
+.notice{
+
+background:#eef4ff;
+
+padding:15px;
+
+border-radius:12px;
+
+margin:10px 0;
+
+}
+
+
+
+
+
+input{
+
+padding:15px;
+
+border-radius:12px;
+
+border:2px solid #ccc;
+
+font-size:16px;
+
+margin:8px;
+
+max-width:400px;
+
+width:90%;
+
+}
+
+
+
+
+
+button{
+
+background:#164a8a;
+
+color:white;
+
+border:0;
+
+border-radius:12px;
+
+padding:15px 20px;
+
+margin:5px;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+
+
+
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+
+
+
+
+.buttons{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-top:20px;
+
+}
+
+
+
+
+#page{
+
+margin-top:20px;
+
+padding:20px;
+
+background:#eef4ff;
+
+border-radius:15px;
+
+}
+
+
+
+
+
+.learn{
+
+width:100%;
+
+font-size:22px;
+
+margin-top:25px;
+
+}
+
+
+
+
+
+canvas{
+
+display:block;
+
+margin:20px auto;
+
+background:black;
+
+border:5px solid #164a8a;
+
+border-radius:15px;
+
+max-width:100%;
+
+touch-action:none;
+
+}
+
+
+
+
+
+.game-buttons{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+
+
+
+
+/* TOUCH ARCADE CONTROLS */
+
+
+#touchControls{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-top:20px;
+
+}
+
+
+
+#touchControls button{
+
+width:70px;
+
+height:70px;
+
+font-size:30px;
+
+}
+
+
+
+
+
+/* DARK MODE */
+
+
+.dark{
+
+background:#111;
+
+color:white;
+
+}
+
+
+
+.dark .card{
+
+background:#222;
+
+color:white;
+
+}
+
+
+
+.dark #page{
+
+background:#333;
+
+}
+
+
 
 
 
@@ -243,18 +386,33 @@ canvas {
 @media(max-width:600px){
 
 
-button {
+#app{
 
-    width:90%;
-
-    font-size:20px;
+padding:10px;
 
 }
 
 
-header h1 {
+header h1{
 
-    font-size:28px;
+font-size:28px;
+
+}
+
+
+
+button{
+
+width:90%;
+
+}
+
+
+canvas{
+
+width:100%;
+
+height:auto;
 
 }
 
