@@ -5,11 +5,11 @@
 
 <title>School Hub Pro</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="style.css">
 
 <link rel="manifest" href="manifest.json">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -27,7 +27,6 @@ Loading School Hub...
 
 
 
-
 <div id="app">
 
 
@@ -37,19 +36,15 @@ Loading School Hub...
 🏫
 </div>
 
-
 <h1 id="schoolTitle">
 School Hub
 </h1>
-
 
 <p>
 Student Portal
 </p>
 
-
 </header>
-
 
 
 
@@ -68,7 +63,6 @@ Student Portal
 
 
 <input id="password" placeholder="Password" type="password">
-
 
 
 <button onclick="login()">
@@ -94,14 +88,10 @@ Log In
 
 
 
-
-
 <div class="card profile">
 
 
-<h2>
-👤 Student Profile
-</h2>
+<h2>👤 Student Profile</h2>
 
 
 <p>
@@ -129,33 +119,23 @@ Online ✅
 
 
 
-
-
 <div class="card">
 
 
-<h2>
-🔔 Notifications
-</h2>
+<h2>🔔 Announcements</h2>
 
 
 <div class="notice">
-
-📢 Welcome to School Hub!
-
+📢 Welcome to School Hub
 </div>
 
 
 <div class="notice">
-
-🏆 Sports Day announced
-
+🏆 Sports Day coming soon
 </div>
 
 
 </div>
-
-
 
 
 
@@ -166,9 +146,7 @@ Online ✅
 <div class="card">
 
 
-<h2>
-📝 Homework
-</h2>
+<h2>📝 Homework</h2>
 
 
 <input id="newHomework" placeholder="Add homework">
@@ -181,89 +159,10 @@ Add
 </button>
 
 
-<div id="homeworkList">
-
-</div>
+<div id="homeworkList"></div>
 
 
 </div>
-
-
-
-
-
-
-
-
-<div class="card">
-
-
-<h2>
-📅 Timetable
-</h2>
-
-
-<div id="timetable">
-
-Monday<br>
-Maths<br>
-Science<br>
-English
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="card">
-
-
-<h2>
-⚙️ Settings
-</h2>
-
-
-
-<button onclick="lightMode()">
-
-☀️ Light
-
-</button>
-
-
-<button onclick="darkMode()">
-
-🌙 Dark
-
-</button>
-
-
-
-<br><br>
-
-
-
-<label>
-
-🎨 Theme Colour
-
-</label>
-
-
-<input type="color" onchange="changeTint(this.value)">
-
-
-
-</div>
-
-
 
 
 
@@ -314,16 +213,12 @@ English
 
 
 <h2>
-
 Welcome
-
 </h2>
 
 
 <p>
-
 Choose a section.
-
 </p>
 
 
@@ -335,15 +230,44 @@ Choose a section.
 
 
 
-
-
 <button class="learn"
-
 onclick="openGames()">
 
 🎮 Learn More
 
 </button>
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>⚙️ Settings</h2>
+
+
+<button onclick="lightMode()">
+☀️ Light
+</button>
+
+
+<button onclick="darkMode()">
+🌙 Dark
+</button>
+
+
+<br><br>
+
+
+<input type="color" onchange="changeTint(this.value)">
+
+
+
+</div>
+
+
 
 
 
@@ -358,13 +282,10 @@ onclick="openGames()">
 
 
 
-
-
 </div>
 
 
 </div>
-
 
 
 
@@ -375,6 +296,5 @@ onclick="openGames()">
 
 
 </body>
-
 
 </html>
