@@ -3,7 +3,7 @@
 
 <head>
 
-<title>School Hub</title>
+<title>Oakwood Academy Portal</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -35,22 +35,20 @@ Student Portal
 
 
 
-<div class="card login" id="loginBox">
+
+<div id="loginBox" class="card">
+
 
 <h2>🔐 Login</h2>
 
 
-<input id="school"
-placeholder="School name">
+<input id="school" placeholder="School name">
 
 
-<input id="username"
-placeholder="Username">
+<input id="username" placeholder="Username">
 
 
-<input id="password"
-placeholder="Password"
-type="password">
+<input id="password" placeholder="Password" type="password">
 
 
 <button onclick="login()">
@@ -67,25 +65,27 @@ Log In
 
 
 
+
+
 <div id="dashboard" style="display:none;">
 
 
 
-<section class="card profile">
+<div class="card profile">
+
 
 <h2>👤 Student Profile</h2>
 
+
 <p>
 Name:
-<span id="studentName">
-</span>
+<span id="studentName"></span>
 </p>
 
 
 <p>
 School:
-<span id="studentSchool">
-</span>
+<span id="studentSchool"></span>
 </p>
 
 
@@ -95,19 +95,21 @@ Online ✅
 </p>
 
 
-</section>
+</div>
 
 
 
 
 
-<section class="news">
+
+
+<div class="card">
 
 
 <h2>📢 Announcements</h2>
 
 
-<div class="card">
+<div class="announcement">
 
 <h3>Welcome!</h3>
 
@@ -118,26 +120,27 @@ Check the latest school updates here.
 </div>
 
 
+<div class="announcement">
 
-<div class="card">
-
-<h3>🏆 School Event</h3>
+<h3>🏆 Sports Day</h3>
 
 <p>
-A new event has been added.
+A new event is coming soon.
 </p>
 
 </div>
 
 
-</section>
+</div>
 
 
 
 
 
 
-<section class="card">
+
+
+<div class="card">
 
 
 <h2>🎯 Clubs</h2>
@@ -152,7 +155,7 @@ A new event has been added.
 <p>🔬 Science Club</p>
 
 
-</section>
+</div>
 
 
 
@@ -160,7 +163,7 @@ A new event has been added.
 
 
 
-<section class="buttons">
+<div class="buttons">
 
 
 <button onclick="openPage('timetable')">
@@ -193,7 +196,8 @@ A new event has been added.
 </button>
 
 
-</section>
+</div>
+
 
 
 
@@ -209,7 +213,7 @@ Welcome
 
 
 <p>
-Choose a section above.
+Select a section.
 </p>
 
 
@@ -243,27 +247,37 @@ Choose a section above.
 
 
 <button onclick="location.reload()">
+
 🏠 Home
+
 </button>
 
 
 <button onclick="openPage('subjects')">
+
 📚 Lessons
+
 </button>
 
 
 <button onclick="openPage('events')">
+
 📅 Calendar
+
 </button>
 
 
 <button onclick="openGames()">
+
 🎮 Learn More
+
 </button>
 
 
-<button>
-👤 Profile
+<button onclick="logout()">
+
+🚪 Logout
+
 </button>
 
 
@@ -271,12 +285,14 @@ Choose a section above.
 
 
 
-</div>
-
-
 
 
 </div>
+
+
+</div>
+
+
 
 
 
