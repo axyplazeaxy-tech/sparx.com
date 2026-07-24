@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Oakwood Academy Portal</title>
+<title>School Hub</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -35,18 +35,14 @@ Student Portal
 
 
 
-
 <div id="loginBox" class="card">
 
 
 <h2>🔐 Login</h2>
 
-
 <input id="school" placeholder="School name">
 
-
 <input id="username" placeholder="Username">
-
 
 <input id="password" placeholder="Password" type="password">
 
@@ -70,30 +66,15 @@ Log In
 <div id="dashboard" style="display:none;">
 
 
-
 <div class="card profile">
-
 
 <h2>👤 Student Profile</h2>
 
+<p>Name: <span id="studentName"></span></p>
 
-<p>
-Name:
-<span id="studentName"></span>
-</p>
+<p>School: <span id="studentSchool"></span></p>
 
-
-<p>
-School:
-<span id="studentSchool"></span>
-</p>
-
-
-<p>
-Status:
-Online ✅
-</p>
-
+<p>Status: Online ✅</p>
 
 </div>
 
@@ -101,38 +82,30 @@ Online ✅
 
 
 
-
-
 <div class="card">
-
 
 <h2>📢 Announcements</h2>
 
+<p>Welcome to your school portal.</p>
 
-<div class="announcement">
-
-<h3>Welcome!</h3>
-
-<p>
-Check the latest school updates here.
-</p>
+<p>🏆 Sports Day coming soon!</p>
 
 </div>
 
 
-<div class="announcement">
 
-<h3>🏆 Sports Day</h3>
 
-<p>
-A new event is coming soon.
-</p>
+
+<div class="card">
+
+<h2>🎯 Clubs</h2>
+
+<p>⚽ Football</p>
+<p>🎮 Computing</p>
+<p>🎨 Art</p>
+<p>🔬 Science</p>
 
 </div>
-
-
-</div>
-
 
 
 
@@ -142,17 +115,40 @@ A new event is coming soon.
 
 <div class="card">
 
+<h2>⚙️ Settings</h2>
 
-<h2>🎯 Clubs</h2>
+
+<label>🌐 Language</label>
+
+<select onchange="changeLanguage(this.value)">
+
+<option>English</option>
+<option>Spanish</option>
+<option>French</option>
+
+</select>
 
 
-<p>⚽ Football Club</p>
+<br><br>
 
-<p>🎮 Computing Club</p>
 
-<p>🎨 Art Club</p>
+<label>🎨 Tint</label>
 
-<p>🔬 Science Club</p>
+<input type="color" onchange="changeTint(this.value)">
+
+
+
+<br><br>
+
+
+<button onclick="lightMode()">
+☀️ Light
+</button>
+
+
+<button onclick="darkMode()">
+🌙 Dark
+</button>
 
 
 </div>
@@ -203,19 +199,11 @@ A new event is coming soon.
 
 
 
-
 <div id="page">
 
+<h2>Welcome</h2>
 
-<h2>
-Welcome
-</h2>
-
-
-<p>
-Select a section.
-</p>
-
+<p>Select a section.</p>
 
 </div>
 
@@ -225,9 +213,6 @@ Select a section.
 
 
 
-<div class="learn-more">
-
-
 <button onclick="openGames()">
 
 🎮 Learn More
@@ -235,43 +220,7 @@ Select a section.
 </button>
 
 
-</div>
-
-
-
-
-
-
-
-<nav class="nav-bar">
-
-
-<button onclick="location.reload()">
-
-🏠 Home
-
-</button>
-
-
-<button onclick="openPage('subjects')">
-
-📚 Lessons
-
-</button>
-
-
-<button onclick="openPage('events')">
-
-📅 Calendar
-
-</button>
-
-
-<button onclick="openGames()">
-
-🎮 Learn More
-
-</button>
+<br><br>
 
 
 <button onclick="logout()">
@@ -281,17 +230,11 @@ Select a section.
 </button>
 
 
-</nav>
-
-
-
-
 
 </div>
 
 
 </div>
-
 
 
 
