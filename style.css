@@ -1,127 +1,84 @@
-/* 🏫 SCHOOL HUB PRO */
+/* 🏫 SCHOOL HUB PRO STYLE */
 
 
 *{
-
-box-sizing:border-box;
-
+    box-sizing:border-box;
 }
 
 
 body{
 
-margin:0;
+    margin:0;
 
-font-family:Arial,sans-serif;
+    background:#f2f5f8;
 
-background:#f2f5f8;
+    color:#222;
 
-color:#222;
+    font-family:Arial, sans-serif;
 
-transition:0.3s;
-
-}
-
-
-
-
-#loading{
-
-position:fixed;
-
-inset:0;
-
-background:#164a8a;
-
-color:white;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-font-size:30px;
-
-z-index:999;
-
-animation:load 2s forwards;
+    padding-bottom:80px;
 
 }
 
 
 
-@keyframes load{
+body.dark{
 
-0%{
+    background:#111;
 
-opacity:1;
-
-}
-
-
-80%{
-
-opacity:1;
+    color:white;
 
 }
-
-
-100%{
-
-opacity:0;
-
-visibility:hidden;
-
-}
-
-}
-
-
 
 
 
 
 #app{
 
-max-width:1000px;
+    max-width:900px;
 
-margin:auto;
+    margin:auto;
 
-padding:20px;
+    padding:20px;
 
 }
-
 
 
 
 
 header{
 
-background:#164a8a;
+    background:#164a8a;
 
-color:white;
+    color:white;
 
-padding:30px;
+    padding:25px;
 
-border-radius:20px;
+    border-radius:20px;
 
-text-align:center;
-
-transition:.3s;
+    text-align:center;
 
 }
-
 
 
 
 .school-logo{
 
-font-size:70px;
+    font-size:70px;
 
 }
+
+
+
+header h1{
+
+    margin:0;
+
+    font-size:38px;
+
+}
+
+
 
 
 
@@ -129,17 +86,25 @@ font-size:70px;
 
 .card{
 
-background:white;
+    background:white;
 
-padding:20px;
+    padding:20px;
 
-margin-top:20px;
+    margin-top:20px;
 
-border-radius:20px;
+    border-radius:18px;
 
-box-shadow:0 5px 15px #0003;
+    box-shadow:0 5px 15px #0003;
 
-transition:.3s;
+}
+
+
+
+.dark .card{
+
+    background:#222;
+
+    color:white;
 
 }
 
@@ -149,7 +114,15 @@ transition:.3s;
 
 .profile{
 
-background:#eef4ff;
+    background:#eef4ff;
+
+}
+
+
+
+.dark .profile{
+
+    background:#333;
 
 }
 
@@ -159,15 +132,24 @@ background:#eef4ff;
 
 .notice{
 
-background:#eef4ff;
+    background:#eef4ff;
 
-padding:15px;
+    padding:15px;
 
-border-radius:12px;
+    border-radius:12px;
 
-margin:10px 0;
+    margin:10px 0;
 
 }
+
+
+
+.dark .notice{
+
+    background:#333;
+
+}
+
 
 
 
@@ -175,21 +157,23 @@ margin:10px 0;
 
 input{
 
-padding:15px;
+    width:90%;
 
-border-radius:12px;
+    max-width:400px;
 
-border:2px solid #ccc;
+    padding:15px;
 
-font-size:16px;
+    margin:10px;
 
-margin:8px;
+    border-radius:12px;
 
-max-width:400px;
+    border:2px solid #ccc;
 
-width:90%;
+    font-size:17px;
 
 }
+
+
 
 
 
@@ -197,35 +181,35 @@ width:90%;
 
 button{
 
-background:#164a8a;
 
-color:white;
+    background:#164a8a;
 
-border:0;
+    color:white;
 
-border-radius:12px;
+    border:none;
 
-padding:15px 20px;
+    padding:14px 20px;
 
-margin:5px;
+    margin:5px;
 
-font-size:17px;
+    border-radius:12px;
 
-cursor:pointer;
+    cursor:pointer;
 
-transition:.2s;
+    font-size:16px;
+
 
 }
-
-
 
 
 
 button:hover{
 
-transform:scale(1.05);
+    opacity:0.8;
 
 }
+
+
 
 
 
@@ -233,30 +217,51 @@ transform:scale(1.05);
 
 .buttons{
 
-display:flex;
+    display:flex;
 
-justify-content:center;
+    flex-wrap:wrap;
 
-flex-wrap:wrap;
+    justify-content:center;
 
-gap:10px;
+    gap:10px;
 
-margin-top:20px;
+    margin-top:20px;
 
 }
+
+
+
+
+
+
+
+.learn-more{
+
+    text-align:center;
+
+    margin:30px;
+
+}
+
+
+
+.learn-more button{
+
+    font-size:22px;
+
+    padding:20px 40px;
+
+}
+
+
+
 
 
 
 
 #page{
 
-margin-top:20px;
-
-padding:20px;
-
-background:#eef4ff;
-
-border-radius:15px;
+    min-height:120px;
 
 }
 
@@ -264,72 +269,47 @@ border-radius:15px;
 
 
 
-.learn{
 
-width:100%;
 
-font-size:22px;
 
-margin-top:25px;
+/* 🎮 GAMES */
+
+
+.game-buttons{
+
+    text-align:center;
+
+    margin:20px;
 
 }
-
-
 
 
 
 canvas{
 
-display:block;
+    display:block;
 
-margin:20px auto;
+    margin:20px auto;
 
-background:black;
+    background:black;
 
-border:5px solid #164a8a;
+    border:5px solid #164a8a;
 
-border-radius:15px;
+    border-radius:15px;
 
-max-width:100%;
-
-touch-action:none;
+    max-width:100%;
 
 }
 
 
 
-
-
-.game-buttons{
-
-display:flex;
-
-justify-content:center;
-
-flex-wrap:wrap;
-
-}
-
-
-
-
-
-/* TOUCH ARCADE CONTROLS */
 
 
 #touchControls{
 
-display:flex;
+    text-align:center;
 
-justify-content:center;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-gap:10px;
-
-margin-top:20px;
+    margin-top:20px;
 
 }
 
@@ -337,11 +317,58 @@ margin-top:20px;
 
 #touchControls button{
 
-width:70px;
+    font-size:30px;
 
-height:70px;
+    width:70px;
 
-font-size:30px;
+    height:70px;
+
+}
+
+
+
+
+
+/* 📱 BOTTOM NAV */
+
+
+.nav-bar{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    padding:10px;
+
+    box-shadow:0 -3px 10px #0004;
+
+}
+
+
+
+.dark .nav-bar{
+
+    background:#222;
+
+}
+
+
+
+.nav-bar button{
+
+    font-size:20px;
+
+    padding:10px;
 
 }
 
@@ -349,72 +376,65 @@ font-size:30px;
 
 
 
-/* DARK MODE */
 
 
-.dark{
-
-background:#111;
-
-color:white;
-
-}
-
-
-
-.dark .card{
-
-background:#222;
-
-color:white;
-
-}
-
-
-
-.dark #page{
-
-background:#333;
-
-}
-
-
-
-
+/* 📱 PHONE */
 
 
 @media(max-width:600px){
 
 
-#app{
+    #app{
 
-padding:10px;
+        padding:10px;
+
+    }
+
+
+    header h1{
+
+        font-size:28px;
+
+    }
+
+
+    button{
+
+        width:90%;
+
+        font-size:18px;
+
+    }
+
+
+    .buttons{
+
+        flex-direction:column;
+
+    }
+
 
 }
 
 
-header h1{
-
-font-size:28px;
-
-}
 
 
 
-button{
-
-width:90%;
-
-}
 
 
-canvas{
+/* 💻 COMPUTER */
 
-width:100%;
 
-height:auto;
+@media(min-width:900px){
 
-}
+
+    #app{
+
+        border-left:1px solid #ddd;
+
+        border-right:1px solid #ddd;
+
+    }
 
 
 }
