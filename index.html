@@ -3,7 +3,7 @@
 
 <head>
 
-<title>School Hub Login</title>
+<title>School Hub</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -22,30 +22,39 @@
 🏫
 </div>
 
-<h1>Oakwood Academy</h1>
+<h1 id="schoolTitle">
+School Hub
+</h1>
 
-<p>Student Portal</p>
+<p>
+Student Portal
+</p>
 
 </header>
 
 
 
-<div class="card login">
 
+<div class="card login" id="loginBox">
 
 <h2>🔐 Login</h2>
 
 
-<input id="username" placeholder="Username">
+<input id="school"
+placeholder="School name">
 
 
-<input id="password" placeholder="Password" type="password">
+<input id="username"
+placeholder="Username">
+
+
+<input id="password"
+placeholder="Password"
+type="password">
 
 
 <button onclick="login()">
-
-Login
-
+Log In
 </button>
 
 
@@ -56,7 +65,219 @@ Login
 
 
 
+
+
+<div id="dashboard" style="display:none;">
+
+
+
+<section class="card profile">
+
+<h2>👤 Student Profile</h2>
+
+<p>
+Name:
+<span id="studentName">
+</span>
+</p>
+
+
+<p>
+School:
+<span id="studentSchool">
+</span>
+</p>
+
+
+<p>
+Status:
+Online ✅
+</p>
+
+
+</section>
+
+
+
+
+
+<section class="news">
+
+
+<h2>📢 Announcements</h2>
+
+
+<div class="card">
+
+<h3>Welcome!</h3>
+
+<p>
+Check the latest school updates here.
+</p>
+
 </div>
+
+
+
+<div class="card">
+
+<h3>🏆 School Event</h3>
+
+<p>
+A new event has been added.
+</p>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<section class="card">
+
+
+<h2>🎯 Clubs</h2>
+
+
+<p>⚽ Football Club</p>
+
+<p>🎮 Computing Club</p>
+
+<p>🎨 Art Club</p>
+
+<p>🔬 Science Club</p>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="buttons">
+
+
+<button onclick="openPage('timetable')">
+📅 Timetable
+</button>
+
+
+<button onclick="openPage('subjects')">
+📚 Subjects
+</button>
+
+
+<button onclick="openPage('homework')">
+📝 Homework
+</button>
+
+
+<button onclick="openPage('events')">
+🎉 Events
+</button>
+
+
+<button onclick="openPage('staff')">
+👩‍🏫 Staff
+</button>
+
+
+<button onclick="openPage('contact')">
+📞 Contact
+</button>
+
+
+</section>
+
+
+
+
+
+
+<div id="page">
+
+
+<h2>
+Welcome
+</h2>
+
+
+<p>
+Choose a section above.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="learn-more">
+
+
+<button onclick="openGames()">
+
+🎮 Learn More
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<nav class="nav-bar">
+
+
+<button onclick="location.reload()">
+🏠 Home
+</button>
+
+
+<button onclick="openPage('subjects')">
+📚 Lessons
+</button>
+
+
+<button onclick="openPage('events')">
+📅 Calendar
+</button>
+
+
+<button onclick="openGames()">
+🎮 Learn More
+</button>
+
+
+<button>
+👤 Profile
+</button>
+
+
+</nav>
+
+
+
+</div>
+
+
+
+
+</div>
+
 
 
 <script src="app.js"></script>
