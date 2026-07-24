@@ -4,6 +4,7 @@ body {
     background:#f2f5f8;
     color:#222;
     font-family:Arial, sans-serif;
+    padding-bottom:90px;
 
 }
 
@@ -41,10 +42,19 @@ header h1 {
 
 
 
-.news,
-.card {
+.school-logo {
 
-    background:#ffffff;
+    font-size:70px;
+    text-align:center;
+
+}
+
+
+
+.card,
+.news {
+
+    background:white;
     margin-top:20px;
     padding:20px;
     border-radius:15px;
@@ -54,13 +64,26 @@ header h1 {
 
 
 
-.buttons {
+.profile {
 
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    margin-top:20px;
+    background:#eef4ff;
+
+}
+
+
+
+input {
+
+    display:block;
+    width:90%;
+    max-width:400px;
+    margin:12px auto;
+    padding:15px;
+
+    border-radius:10px;
+    border:2px solid #ccc;
+
+    font-size:17px;
 
 }
 
@@ -70,10 +93,15 @@ button {
 
     background:#164a8a;
     color:white;
+
     border:none;
+
     padding:15px 20px;
+
     border-radius:10px;
+
     font-size:17px;
+
     cursor:pointer;
 
 }
@@ -88,114 +116,124 @@ button:hover {
 
 
 
+.buttons {
+
+    display:flex;
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+
+
 #page {
 
     margin-top:20px;
+
     padding:20px;
+
     background:#eef4ff;
+
     border-radius:15px;
 
 }
 
 
 
+
+
 .learn-more {
 
     text-align:center;
+
     margin-top:30px;
 
 }
 
 
 
+
+
+.nav-bar {
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-around;
+
+
+    padding:10px;
+
+
+    box-shadow:0 -3px 10px #0003;
+
+
+}
+
+
+
+.nav-bar button {
+
+    font-size:13px;
+
+    padding:10px;
+
+}
+
+
+
+
+
 canvas {
 
     display:block;
+
     margin:25px auto;
+
     background:black;
+
     border:5px solid #164a8a;
+
     border-radius:10px;
 
 }
 
 
 
+
+
 @media(max-width:600px){
 
-    button {
 
-        width:90%;
-        font-size:20px;
+button {
 
-    }
+    width:90%;
 
-
-    header h1 {
-
-        font-size:28px;
-
-    }
-
-}
-
-.school-logo {
-
-    font-size:70px;
-    text-align:center;
+    font-size:20px;
 
 }
 
 
-.profile {
+header h1 {
 
-    background:#eef4ff;
-
-}
-
-.nav-bar {
-
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-
-background:white;
-
-display:flex;
-justify-content:space-around;
-
-padding:10px;
-
-box-shadow:0 -3px 10px #0003;
+    font-size:28px;
 
 }
 
-
-.nav-bar button {
-
-font-size:14px;
-padding:10px;
-
-}
-
-
-body {
-
-padding-bottom:80px;
-
-}
-
-
-.school-logo {
-
-font-size:70px;
-text-align:center;
-
-}
-
-
-.profile {
-
-background:#eef4ff;
 
 }
