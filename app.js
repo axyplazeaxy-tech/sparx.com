@@ -1,21 +1,20 @@
-// 🏫 SCHOOL HUB PRO MAX
-// Login + Dashboard + Settings + Arcade
+// 🏫 SCHOOL HUB PRO
+// Login + Dashboard + Pages + Homework
 
 
 // ======================
-// APP START
+// STARTUP
 // ======================
 
+window.onload = function(){
 
-window.onload=function(){
+    if(localStorage.getItem("username")){
 
-if(localStorage.getItem("username")){
+        showDashboard();
 
-showDashboard();
+    }
 
-}
-
-loadSettings();
+    loadSettings();
 
 };
 
@@ -26,53 +25,45 @@ loadSettings();
 // LOGIN
 // ======================
 
-
 function login(){
 
-
-let school=document.getElementById("school").value.trim();
-
-let username=document.getElementById("username").value.trim();
-
-let password=document.getElementById("password").value.trim();
+    let school =
+    document.getElementById("school").value.trim();
 
 
-
-if(!school || !username || !password){
-
-
-document.getElementById("loginMessage").innerHTML=
-"⚠️ Please fill in every box";
+    let username =
+    document.getElementById("username").value.trim();
 
 
-return;
-
-}
+    let password =
+    document.getElementById("password").value.trim();
 
 
 
+    if(!school || !username || !password){
 
-localStorage.setItem(
-"school",
-school
-);
+        document.getElementById("loginMessage").innerHTML =
+        "⚠️ Please fill in all boxes";
 
+        return;
 
-localStorage.setItem(
-"username",
-username
-);
-
-
-localStorage.setItem(
-"avatar",
-"🙂"
-);
+    }
 
 
 
-showDashboard();
+    localStorage.setItem(
+        "school",
+        school
+    );
 
+
+    localStorage.setItem(
+        "username",
+        username
+    );
+
+
+    showDashboard();
 
 }
 
@@ -81,65 +72,68 @@ showDashboard();
 
 function showDashboard(){
 
-
-let login=document.getElementById("loginBox");
-
-let dash=document.getElementById("dashboard");
+    let loginBox =
+    document.getElementById("loginBox");
 
 
-
-if(login)
-login.style.display="none";
-
-
-if(dash)
-dash.style.display="block";
+    let dashboard =
+    document.getElementById("dashboard");
 
 
 
+    if(loginBox){
 
-let school=localStorage.getItem("school");
+        loginBox.style.display="none";
 
-let user=localStorage.getItem("username");
-
-
-
-let title=document.getElementById("schoolTitle");
-
-let name=document.getElementById("studentName");
-
-let studentSchool=document.getElementById("studentSchool");
+    }
 
 
 
-if(title)
-title.innerHTML=school;
+    if(dashboard){
 
+        dashboard.style.display="block";
 
-if(name)
-name.innerHTML=user;
-
-
-if(studentSchool)
-studentSchool.innerHTML=school;
+    }
 
 
 
-loadSettings();
+    let school =
+    localStorage.getItem("school");
+
+
+    let username =
+    localStorage.getItem("username");
+
+
+
+    document.getElementById("schoolTitle").innerHTML =
+    school;
+
+
+    document.getElementById("studentName").innerHTML =
+    username;
+
+
+    document.getElementById("studentSchool").innerHTML =
+    school;
+
+
+
+    loadSettings();
 
 }
+
 
 
 
 
 function logout(){
 
-localStorage.clear();
+    localStorage.clear();
 
-location.reload();
+    location.reload();
 
 }
-
 
 
 
@@ -152,29 +146,27 @@ location.reload();
 
 function changeAvatar(){
 
+    let avatar =
+    prompt(
+        "Enter an emoji avatar"
+    );
 
-let avatar=prompt(
-"Choose an emoji avatar"
-);
+
+    if(avatar){
+
+        localStorage.setItem(
+            "avatar",
+            avatar
+        );
 
 
-if(avatar){
+        alert(
+            "Avatar updated!"
+        );
 
-localStorage.setItem(
-"avatar",
-avatar
-);
-
-alert(
-"Avatar changed!"
-);
+    }
 
 }
-
-
-}
-
-
 
 
 
@@ -189,12 +181,12 @@ alert(
 function openPage(page){
 
 
-let box=document.getElementById("page");
+    let box =
+    document.getElementById("page");
 
 
 
-let pages={
-
+    let pages = {
 
 
 home:`
@@ -202,7 +194,24 @@ home:`
 <h2>🏠 Home</h2>
 
 <p>
-Welcome back to your student portal.
+Welcome to your student portal.
+</p>
+
+`,
+
+
+
+subjects:`
+
+<h2>📚 Subjects</h2>
+
+<p>
+Maths<br>
+English<br>
+Science<br>
+Computing<br>
+Art<br>
+Languages
 </p>
 
 `,
@@ -227,27 +236,10 @@ PE
 
 
 
-subjects:`
-
-<h2>📚 Subjects</h2>
-
-<p>
-Maths<br>
-English<br>
-Science<br>
-Computing<br>
-Art<br>
-Languages
-</p>
-
-`,
-
-
-
-
 homework:`
 
 <h2>📝 Homework</h2>
+
 
 <input id="newHomework"
 placeholder="Add homework">
@@ -260,7 +252,6 @@ Add
 
 <div id="homeworkList"></div>
 
-
 `,
 
 
@@ -270,13 +261,11 @@ events:`
 
 <h2>🎉 Events</h2>
 
-<div class="notice">
-🏆 Sports Day coming soon
-</div>
-
-<div class="notice">
-🚌 School Trip
-</div>
+<p>
+Sports Day<br>
+Trips<br>
+Assemblies
+</p>
 
 `,
 
@@ -288,18 +277,9 @@ clubs:`
 <h2>🎯 Clubs</h2>
 
 <p>
-⚽ Football Club
-</p>
-
-<p>
-🎮 Computing Club
-</p>
-
-<p>
-🎨 Art Club
-</p>
-
-<p>
+⚽ Football Club<br>
+🎮 Computing Club<br>
+🎨 Art Club<br>
 🔬 Science Club
 </p>
 
@@ -334,13 +314,12 @@ school@example.com
 `
 
 
-
 };
 
 
 
-box.innerHTML=pages[page];
-
+box.innerHTML =
+pages[page];
 
 
 loadHomework();
@@ -354,47 +333,58 @@ loadHomework();
 
 
 // ======================
-// HOMEWORK STORAGE
+// HOMEWORK SAVER
 // ======================
 
 
 function addHomework(){
 
-
-let input=document.getElementById("newHomework");
-
-
-if(!input.value)
-return;
+    let input =
+    document.getElementById(
+        "newHomework"
+    );
 
 
+    if(!input.value){
 
-let list=JSON.parse(
+        return;
 
-localStorage.getItem("homework") || "[]"
-
-);
+    }
 
 
 
-list.push(input.value);
+    let list =
+    JSON.parse(
+
+        localStorage.getItem("homework")
+        ||
+        "[]"
+
+    );
 
 
 
-localStorage.setItem(
-"homework",
-JSON.stringify(list)
-);
+    list.push(
+        input.value
+    );
 
 
 
-input.value="";
+    localStorage.setItem(
+        "homework",
+        JSON.stringify(list)
+    );
 
 
-loadHomework();
+
+    input.value="";
+
+
+    loadHomework();
 
 
 }
+
 
 
 
@@ -402,44 +392,54 @@ loadHomework();
 function loadHomework(){
 
 
-let box=document.getElementById("homeworkList");
-
-
-if(!box)
-return;
-
-
-
-let list=JSON.parse(
-
-localStorage.getItem("homework") || "[]"
-
-);
+    let box =
+    document.getElementById(
+        "homeworkList"
+    );
 
 
 
-box.innerHTML="";
+    if(!box){
+
+        return;
+
+    }
 
 
 
-list.forEach((item,index)=>{
+    let list =
+    JSON.parse(
+
+        localStorage.getItem("homework")
+        ||
+        "[]"
+
+    );
 
 
-box.innerHTML+=`
 
-<p>
-✅ ${item}
-
-<button onclick="removeHomework(${index})">
-❌
-</button>
-
-</p>
-
-`;
+    box.innerHTML="";
 
 
-});
+
+    list.forEach(function(item,index){
+
+
+        box.innerHTML += `
+
+        <p>
+        ✅ ${item}
+
+        <button onclick="removeHomework(${index})">
+        ❌
+        </button>
+
+        </p>
+
+        `;
+
+
+    });
 
 
 }
@@ -448,26 +448,34 @@ box.innerHTML+=`
 
 
 
-function removeHomework(i){
+function removeHomework(index){
 
 
-let list=JSON.parse(
+    let list =
+    JSON.parse(
 
-localStorage.getItem("homework") || "[]"
+        localStorage.getItem("homework")
+        ||
+        "[]"
 
-);
-
-
-list.splice(i,1);
-
-
-localStorage.setItem(
-"homework",
-JSON.stringify(list)
-);
+    );
 
 
-loadHomework();
+
+    list.splice(
+        index,
+        1
+    );
+
+
+
+    localStorage.setItem(
+        "homework",
+        JSON.stringify(list)
+    );
+
+
+    loadHomework();
 
 
 }
@@ -489,7 +497,6 @@ localStorage.setItem(
 
 
 
-
 function lightMode(){
 
 document.body.classList.remove("dark");
@@ -500,7 +507,6 @@ localStorage.setItem(
 );
 
 }
-
 
 
 
@@ -526,7 +532,6 @@ color
 
 
 
-
 function changeLanguage(language){
 
 localStorage.setItem(
@@ -539,31 +544,8 @@ alert(
 "Language changed to "+language
 );
 
-
 }
 
-
-
-
-
-function soundToggle(){
-
-let current=
-localStorage.getItem("sound");
-
-
-localStorage.setItem(
-"sound",
-current==="on" ? "off":"on"
-);
-
-
-alert(
-"Sound: "+localStorage.getItem("sound")
-);
-
-
-}
 
 
 
@@ -571,10 +553,7 @@ alert(
 function loadSettings(){
 
 
-if(
-localStorage.getItem("theme")
-==="dark"
-){
+if(localStorage.getItem("theme")=="dark"){
 
 darkMode();
 
@@ -582,10 +561,7 @@ darkMode();
 
 
 
-
-let tint=
-localStorage.getItem("tint");
-
+let tint=localStorage.getItem("tint");
 
 
 if(tint){
@@ -602,14 +578,12 @@ changeTint(tint);
 
 
 
-
 // ======================
 // 🎮 LEARN MORE ARCADE
 // ======================
 
 
 function openGames(){
-
 
 
 document.getElementById("app").innerHTML=`
@@ -620,27 +594,35 @@ document.getElementById("app").innerHTML=`
 🎮
 </div>
 
+
 <h1>
 Learn More
 </h1>
+
 
 <p>
 School Arcade
 </p>
 
+
 </header>
 
 
 
+<button onclick="location.reload()">
 
-<button onclick="backHome()">
 ⬅ Back
+
 </button>
+
 
 
 <button onclick="zoomGame()">
+
 🔍 Fullscreen
+
 </button>
+
 
 
 
@@ -649,22 +631,33 @@ School Arcade
 
 
 <button onclick="startSnake()">
+
 🐍 Snake
+
 </button>
+
 
 
 <button onclick="startPong()">
+
 🏓 Pong
+
 </button>
+
 
 
 <button onclick="startShooter()">
+
 🚀 Shooter
+
 </button>
 
 
+
 <button onclick="startBreakout()">
+
 🧱 Breakout
+
 </button>
 
 
@@ -674,11 +667,11 @@ School Arcade
 
 
 
-<canvas
-id="gameCanvas"
+<canvas id="gameCanvas"
 width="600"
 height="500">
 </canvas>
+
 
 
 
@@ -717,17 +710,6 @@ height="500">
 
 `;
 
-
-
-}
-
-
-
-
-function backHome(){
-
-location.reload();
-
 }
 
 
@@ -736,9 +718,9 @@ location.reload();
 
 function zoomGame(){
 
-
-let canvas=
-document.getElementById("gameCanvas");
+let canvas=document.getElementById(
+"gameCanvas"
+);
 
 
 
@@ -748,9 +730,7 @@ canvas.requestFullscreen();
 
 }
 
-
 }
-
 
 
 
@@ -778,95 +758,82 @@ code:key
 
 
 
+
+// ======================
+// ⌨️ ENTER LOGIN
+// ======================
+
+
+document.addEventListener(
+"keydown",
+function(e){
+
+
+if(e.key==="Enter"){
+
+
+if(document.getElementById("loginBox")){
+
+login();
+
+}
+
+
+}
+
+
+});
 // ======================
 // 🐍 SNAKE
 // ======================
 
-
 function startSnake(){
 
+let canvas=document.getElementById("gameCanvas");
 
-let canvas=
-document.getElementById("gameCanvas");
-
-
-let ctx=
-canvas.getContext("2d");
-
+let ctx=canvas.getContext("2d");
 
 
 let snake=[
-
-{x:200,y:200}
-
+{x:300,y:250}
 ];
 
 
 let food={
-
 x:100,
-
 y:100
-
 };
 
 
 let dx=20;
-
 let dy=0;
-
 let score=0;
 
 
 
 document.onkeydown=function(e){
 
-
-if(e.key==="ArrowUp"){
-
+if(e.key==="ArrowUp" && dy===0){
 dx=0;
-
 dy=-20;
-
 }
 
-
-
-if(e.key==="ArrowDown"){
-
+if(e.key==="ArrowDown" && dy===0){
 dx=0;
-
 dy=20;
-
 }
 
-
-
-if(e.key==="ArrowLeft"){
-
+if(e.key==="ArrowLeft" && dx===0){
 dx=-20;
-
 dy=0;
-
 }
 
-
-
-if(e.key==="ArrowRight"){
-
+if(e.key==="ArrowRight" && dx===0){
 dx=20;
-
 dy=0;
-
 }
-
-
 
 };
-
-
-
-
 
 
 
@@ -874,21 +841,13 @@ function game(){
 
 
 ctx.fillStyle="black";
-
-ctx.fillRect(
-0,
-0,
-600,
-500
-);
+ctx.fillRect(0,0,600,500);
 
 
 
 ctx.fillStyle="lime";
 
-
 snake.forEach(part=>{
-
 
 ctx.fillRect(
 part.x,
@@ -897,13 +856,11 @@ part.y,
 20
 );
 
-
 });
 
 
 
 ctx.fillStyle="red";
-
 
 ctx.fillRect(
 food.x,
@@ -911,7 +868,6 @@ food.y,
 20,
 20
 );
-
 
 
 
@@ -929,37 +885,26 @@ snake.unshift(head);
 
 
 
-if(
-head.x===food.x &&
-head.y===food.y
-){
-
+if(head.x===food.x && head.y===food.y){
 
 score++;
 
+food.x=Math.floor(Math.random()*30)*20;
 
-food.x=
-Math.floor(Math.random()*30)*20;
-
-
-food.y=
-Math.floor(Math.random()*25)*20;
+food.y=Math.floor(Math.random()*25)*20;
 
 
 }
 
 else{
 
-
 snake.pop();
-
 
 }
 
 
 
 ctx.fillStyle="white";
-
 
 ctx.fillText(
 "Score: "+score,
@@ -969,17 +914,39 @@ ctx.fillText(
 
 
 
+if(
+head.x<0 ||
+head.y<0 ||
+head.x>580 ||
+head.y>480
+){
+
+alert("Game Over");
+
+location.reload();
+
+return;
+
+}
+
+
+
 requestAnimationFrame(game);
 
 
 }
 
 
-
 game();
 
-
 }
+
+
+
+
+
+
+
 // ======================
 // 🏓 PONG
 // ======================
@@ -987,15 +954,16 @@ game();
 
 function startPong(){
 
-
 let canvas=document.getElementById("gameCanvas");
 
 let ctx=canvas.getContext("2d");
 
 
-let playerY=200;
 
-let cpuY=200;
+let player=200;
+
+let cpu=200;
+
 
 
 let ball={
@@ -1011,73 +979,48 @@ dy:4
 };
 
 
-let score=0;
-
-
 
 document.onkeydown=function(e){
 
-
-if(e.key==="ArrowUp"){
-
-playerY-=30;
-
-}
+if(e.key==="ArrowUp")
+player-=30;
 
 
-if(e.key==="ArrowDown"){
-
-playerY+=30;
-
-}
-
+if(e.key==="ArrowDown")
+player+=30;
 
 };
 
 
 
 
-
-
-
 function game(){
-
 
 ctx.fillStyle="black";
 
-ctx.fillRect(
-0,
-0,
-600,
-500
-);
+ctx.fillRect(0,0,600,500);
 
 
 
 ctx.fillStyle="white";
 
 
-// player
-
 ctx.fillRect(
 30,
-playerY,
+player,
 15,
 100
 );
 
-
-// cpu
 
 ctx.fillRect(
 555,
-cpuY,
+cpu,
 15,
 100
 );
 
 
-// ball
 
 ctx.fillRect(
 ball.x,
@@ -1104,13 +1047,11 @@ ball.dy*=-1;
 
 if(
 ball.x<45 &&
-ball.y>playerY &&
-ball.y<playerY+100
+ball.y>player &&
+ball.y<player+100
 ){
 
 ball.dx*=-1;
-
-score++;
 
 }
 
@@ -1118,8 +1059,8 @@ score++;
 
 if(
 ball.x>540 &&
-ball.y>cpuY &&
-ball.y<cpuY+100
+ball.y>cpu &&
+ball.y<cpu+100
 ){
 
 ball.dx*=-1;
@@ -1128,15 +1069,7 @@ ball.dx*=-1;
 
 
 
-cpuY += (ball.y-cpuY)*0.05;
-
-
-
-ctx.fillText(
-"Score: "+score,
-20,
-30
-);
+cpu+=(ball.y-cpu)*0.05;
 
 
 
@@ -1146,9 +1079,7 @@ requestAnimationFrame(game);
 }
 
 
-
 game();
-
 
 }
 
@@ -1159,12 +1090,11 @@ game();
 
 
 // ======================
-// 🚀 SPACE SHOOTER
+// 🚀 SHOOTER
 // ======================
 
 
 function startShooter(){
-
 
 let canvas=document.getElementById("gameCanvas");
 
@@ -1184,19 +1114,12 @@ let score=0;
 document.onkeydown=function(e){
 
 
-if(e.key==="ArrowLeft"){
-
+if(e.key==="ArrowLeft")
 player-=25;
 
-}
 
-
-
-if(e.key==="ArrowRight"){
-
+if(e.key==="ArrowRight")
 player+=25;
-
-}
 
 
 
@@ -1217,11 +1140,7 @@ y:450
 
 
 
-
-
-
 setInterval(()=>{
-
 
 enemies.push({
 
@@ -1232,10 +1151,7 @@ y:0
 });
 
 
-},900);
-
-
-
+},800);
 
 
 
@@ -1243,20 +1159,13 @@ y:0
 
 function game(){
 
-
 ctx.fillStyle="black";
 
-ctx.fillRect(
-0,
-0,
-600,
-500
-);
+ctx.fillRect(0,0,600,500);
 
 
 
 ctx.fillStyle="lime";
-
 
 ctx.fillRect(
 player,
@@ -1267,16 +1176,12 @@ player,
 
 
 
-
-
 ctx.fillStyle="yellow";
 
 
 bullets.forEach(b=>{
 
-
 b.y-=8;
-
 
 ctx.fillRect(
 b.x,
@@ -1285,10 +1190,7 @@ b.y,
 15
 );
 
-
 });
-
-
 
 
 
@@ -1297,9 +1199,7 @@ ctx.fillStyle="red";
 
 enemies.forEach(e=>{
 
-
 e.y+=4;
-
 
 ctx.fillRect(
 e.x,
@@ -1308,64 +1208,17 @@ e.y,
 35
 );
 
-
 });
-
-
-
-
-
-bullets.forEach((b,bi)=>{
-
-
-enemies.forEach((e,ei)=>{
-
-
-if(
-
-b.x<e.x+35 &&
-
-b.x+6>e.x &&
-
-b.y<e.y+35 &&
-
-b.y+15>e.y
-
-){
-
-
-bullets.splice(bi,1);
-
-
-enemies.splice(ei,1);
-
-
-score++;
-
-
-}
-
-
-});
-
-
-});
-
 
 
 
 
 ctx.fillStyle="white";
 
-
 ctx.fillText(
-
 "Score: "+score,
-
 20,
-
 30
-
 );
 
 
@@ -1376,12 +1229,9 @@ requestAnimationFrame(game);
 }
 
 
-
 game();
 
-
 }
-
 
 
 
@@ -1396,15 +1246,12 @@ game();
 
 function startBreakout(){
 
-
 let canvas=document.getElementById("gameCanvas");
 
 let ctx=canvas.getContext("2d");
 
 
-
 let paddle=250;
-
 
 
 let ball={
@@ -1421,53 +1268,14 @@ dy:-5
 
 
 
-
-let bricks=[];
-
-
-
-for(let y=0;y<4;y++){
-
-
-for(let x=0;x<10;x++){
-
-
-bricks.push({
-
-x:x*60,
-
-y:y*30,
-
-alive:true
-
-});
-
-
-}
-
-
-}
-
-
-
-
-
 document.onkeydown=function(e){
 
-
-if(e.key==="ArrowLeft"){
-
+if(e.key==="ArrowLeft")
 paddle-=30;
 
-}
 
-
-
-if(e.key==="ArrowRight"){
-
+if(e.key==="ArrowRight")
 paddle+=30;
-
-}
 
 
 };
@@ -1475,21 +1283,11 @@ paddle+=30;
 
 
 
-
-
 function game(){
-
 
 ctx.fillStyle="black";
 
-ctx.fillRect(
-0,
-0,
-600,
-500
-);
-
-
+ctx.fillRect(0,0,600,500);
 
 
 
@@ -1497,34 +1295,20 @@ ctx.fillStyle="white";
 
 
 ctx.fillRect(
-
 paddle,
-
 460,
-
 100,
-
 15
-
 );
-
-
 
 
 
 ctx.fillRect(
-
 ball.x,
-
 ball.y,
-
 15,
-
 15
-
 );
-
-
 
 
 
@@ -1534,95 +1318,25 @@ ball.y+=ball.dy;
 
 
 
-
-
-if(ball.x<0 || ball.x>585){
-
+if(ball.x<0 || ball.x>585)
 ball.dx*=-1;
 
-}
 
 
-
-if(ball.y<0){
-
+if(ball.y<0)
 ball.dy*=-1;
-
-}
-
 
 
 
 if(
-
 ball.y>430 &&
-
 ball.x>paddle &&
-
 ball.x<paddle+100
-
 ){
 
 ball.dy*=-1;
 
 }
-
-
-
-
-
-
-bricks.forEach(brick=>{
-
-
-if(brick.alive){
-
-
-ctx.fillStyle="red";
-
-
-ctx.fillRect(
-
-brick.x,
-
-brick.y,
-
-50,
-
-20
-
-);
-
-
-
-
-
-if(
-
-ball.x>brick.x &&
-
-ball.x<brick.x+50 &&
-
-ball.y>brick.y &&
-
-ball.y<brick.y+20
-
-){
-
-
-brick.alive=false;
-
-ball.dy*=-1;
-
-
-}
-
-
-}
-
-
-});
-
 
 
 
@@ -1633,9 +1347,7 @@ requestAnimationFrame(game);
 
 
 
-
 game();
-
 
 }
 
@@ -1645,17 +1357,34 @@ game();
 
 
 
+// ======================
+// 📱 TOUCH + CONTROLLER
+// ======================
 
-// ======================
-// 🎮 CONTROLLER SUPPORT
-// ======================
+
+function pressKey(key){
+
+document.dispatchEvent(
+
+new KeyboardEvent(
+"keydown",
+{
+key:key,
+code:key
+}
+)
+
+);
+
+}
+
+
+
 
 
 function controllerLoop(){
 
-
 let pad=navigator.getGamepads()[0];
-
 
 
 if(pad){
@@ -1668,13 +1397,11 @@ pressKey("ArrowLeft");
 }
 
 
-
 if(pad.buttons[15]?.pressed){
 
 pressKey("ArrowRight");
 
 }
-
 
 
 if(pad.buttons[0]?.pressed){
@@ -1687,7 +1414,6 @@ pressKey("Space");
 }
 
 
-
 requestAnimationFrame(controllerLoop);
 
 
@@ -1695,39 +1421,5 @@ requestAnimationFrame(controllerLoop);
 
 
 controllerLoop();
-
-
-
-
-
-
-
-
-// ======================
-// ⌨️ ENTER LOGIN
-// ======================
-
-
-document.addEventListener(
-"keydown",
-function(e){
-
-
-if(e.key==="Enter"){
-
-
-if(
-document.getElementById("loginBox")
-){
-
-login();
-
-}
-
-
-}
-
-
-});
 
 
