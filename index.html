@@ -3,14 +3,29 @@
 
 <head>
 
-<title>School Hub</title>
+<title>School Hub Pro</title>
 
 <link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
 
 <body>
+
+
+<div id="loading">
+
+🏫
+<br>
+Loading School Hub...
+
+</div>
+
+
 
 
 <div id="app">
@@ -22,15 +37,20 @@
 🏫
 </div>
 
+
 <h1 id="schoolTitle">
 School Hub
 </h1>
+
 
 <p>
 Student Portal
 </p>
 
+
 </header>
+
+
 
 
 
@@ -40,15 +60,21 @@ Student Portal
 
 <h2>🔐 Login</h2>
 
+
 <input id="school" placeholder="School name">
 
+
 <input id="username" placeholder="Username">
+
 
 <input id="password" placeholder="Password" type="password">
 
 
+
 <button onclick="login()">
+
 Log In
+
 </button>
 
 
@@ -63,47 +89,38 @@ Log In
 
 
 
+
 <div id="dashboard" style="display:none;">
+
+
+
 
 
 <div class="card profile">
 
-<h2>👤 Student Profile</h2>
 
-<p>Name: <span id="studentName"></span></p>
-
-<p>School: <span id="studentSchool"></span></p>
-
-<p>Status: Online ✅</p>
-
-</div>
+<h2>
+👤 Student Profile
+</h2>
 
 
+<p>
+Name:
+<span id="studentName"></span>
+</p>
 
 
-
-<div class="card">
-
-<h2>📢 Announcements</h2>
-
-<p>Welcome to your school portal.</p>
-
-<p>🏆 Sports Day coming soon!</p>
-
-</div>
+<p>
+School:
+<span id="studentSchool"></span>
+</p>
 
 
+<p>
+Status:
+Online ✅
+</p>
 
-
-
-<div class="card">
-
-<h2>🎯 Clubs</h2>
-
-<p>⚽ Football</p>
-<p>🎮 Computing</p>
-<p>🎨 Art</p>
-<p>🔬 Science</p>
 
 </div>
 
@@ -113,45 +130,140 @@ Log In
 
 
 
+
 <div class="card">
 
-<h2>⚙️ Settings</h2>
+
+<h2>
+🔔 Notifications
+</h2>
 
 
-<label>🌐 Language</label>
+<div class="notice">
 
-<select onchange="changeLanguage(this.value)">
+📢 Welcome to School Hub!
 
-<option>English</option>
-<option>Spanish</option>
-<option>French</option>
+</div>
 
-</select>
+
+<div class="notice">
+
+🏆 Sports Day announced
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+📝 Homework
+</h2>
+
+
+<input id="newHomework" placeholder="Add homework">
+
+
+<button onclick="addHomework()">
+
+Add
+
+</button>
+
+
+<div id="homeworkList">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+📅 Timetable
+</h2>
+
+
+<div id="timetable">
+
+Monday<br>
+Maths<br>
+Science<br>
+English
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+⚙️ Settings
+</h2>
+
+
+
+<button onclick="lightMode()">
+
+☀️ Light
+
+</button>
+
+
+<button onclick="darkMode()">
+
+🌙 Dark
+
+</button>
+
 
 
 <br><br>
 
 
-<label>🎨 Tint</label>
+
+<label>
+
+🎨 Theme Colour
+
+</label>
+
 
 <input type="color" onchange="changeTint(this.value)">
 
 
 
-<br><br>
-
-
-<button onclick="lightMode()">
-☀️ Light
-</button>
-
-
-<button onclick="darkMode()">
-🌙 Dark
-</button>
-
-
 </div>
+
+
 
 
 
@@ -162,37 +274,36 @@ Log In
 <div class="buttons">
 
 
-<button onclick="openPage('timetable')">
-📅 Timetable
-</button>
-
-
 <button onclick="openPage('subjects')">
+
 📚 Subjects
-</button>
 
-
-<button onclick="openPage('homework')">
-📝 Homework
 </button>
 
 
 <button onclick="openPage('events')">
+
 🎉 Events
+
 </button>
 
 
 <button onclick="openPage('staff')">
+
 👩‍🏫 Staff
+
 </button>
 
 
 <button onclick="openPage('contact')">
+
 📞 Contact
+
 </button>
 
 
 </div>
+
 
 
 
@@ -201,9 +312,20 @@ Log In
 
 <div id="page">
 
-<h2>Welcome</h2>
 
-<p>Select a section.</p>
+<h2>
+
+Welcome
+
+</h2>
+
+
+<p>
+
+Choose a section.
+
+</p>
+
 
 </div>
 
@@ -213,14 +335,18 @@ Log In
 
 
 
-<button onclick="openGames()">
+
+
+<button class="learn"
+
+onclick="openGames()">
 
 🎮 Learn More
 
 </button>
 
 
-<br><br>
+
 
 
 <button onclick="logout()">
@@ -231,10 +357,16 @@ Log In
 
 
 
+
+
+
 </div>
 
 
 </div>
+
+
+
 
 
 
@@ -243,5 +375,6 @@ Log In
 
 
 </body>
+
 
 </html>
