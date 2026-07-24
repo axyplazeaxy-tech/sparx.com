@@ -1,9 +1,9 @@
 // 🏫 SCHOOL HUB PRO
-// Login + Dashboard + Settings + Arcade
+// Desktop + Mobile Version
 
 
 // ======================
-// LOGIN
+// LOGIN SYSTEM
 // ======================
 
 
@@ -25,26 +25,36 @@ document.getElementById("password").value;
 if(school && username && password){
 
 
-localStorage.setItem("school",school);
+localStorage.setItem(
+"school",
+school
+);
 
-localStorage.setItem("username",username);
+
+localStorage.setItem(
+"username",
+username
+);
+
 
 
 showDashboard();
 
 
 }
+
 else{
 
 
 document.getElementById("loginMessage").innerHTML =
-"Fill in all boxes";
+"Please fill in all boxes";
 
 
 }
 
 
 }
+
 
 
 
@@ -53,10 +63,23 @@ document.getElementById("loginMessage").innerHTML =
 function showDashboard(){
 
 
-document.getElementById("loginBox").style.display="none";
+let loginBox =
+document.getElementById("loginBox");
 
 
-document.getElementById("dashboard").style.display="block";
+let dashboard =
+document.getElementById("dashboard");
+
+
+
+if(loginBox)
+loginBox.style.display="none";
+
+
+
+if(dashboard)
+dashboard.style.display="block";
+
 
 
 
@@ -64,18 +87,25 @@ document.getElementById("schoolTitle").innerHTML =
 localStorage.getItem("school");
 
 
+
 document.getElementById("studentName").innerHTML =
 localStorage.getItem("username");
+
 
 
 document.getElementById("studentSchool").innerHTML =
 localStorage.getItem("school");
 
 
+
 loadSettings();
+
+loadHomework();
 
 
 }
+
+
 
 
 
@@ -93,13 +123,17 @@ location.reload();
 
 
 
+
+
 window.onload=function(){
+
 
 if(localStorage.getItem("username")){
 
 showDashboard();
 
 }
+
 
 };
 
@@ -108,34 +142,21 @@ showDashboard();
 
 
 
+
 // ======================
-// SCHOOL PAGES
+// SCHOOL SECTIONS
 // ======================
 
 
 function openPage(page){
 
 
-let box=document.getElementById("page");
+let box =
+document.getElementById("page");
 
 
 
 let pages={
-
-
-timetable:`
-
-<h2>📅 Timetable</h2>
-
-<p>
-Monday<br>
-Maths<br>
-Science<br>
-English<br>
-PE
-</p>
-
-`,
 
 
 subjects:`
@@ -147,18 +168,8 @@ Maths<br>
 English<br>
 Science<br>
 Computing<br>
-Art
-</p>
-
-`,
-
-
-homework:`
-
-<h2>📝 Homework</h2>
-
-<p>
-No homework today.
+Art<br>
+Languages
 </p>
 
 `,
@@ -170,8 +181,9 @@ events:`
 
 <p>
 Sports Day<br>
-Trips<br>
-Clubs
+School Trips<br>
+Clubs<br>
+Assemblies
 </p>
 
 `,
@@ -182,8 +194,9 @@ staff:`
 <h2>👩‍🏫 Staff</h2>
 
 <p>
+Headteacher<br>
 Teachers<br>
-Support Team
+Student Support
 </p>
 
 `,
@@ -199,11 +212,13 @@ school@example.com
 
 `
 
+
 };
 
 
 
-box.innerHTML=pages[page];
+box.innerHTML =
+pages[page];
 
 
 }
@@ -215,21 +230,109 @@ box.innerHTML=pages[page];
 
 
 // ======================
-// SETTINGS
+// HOMEWORK SAVER
+// ======================
+
+
+function addHomework(){
+
+
+let input =
+document.getElementById("newHomework");
+
+
+if(input.value=="")
+return;
+
+
+
+let homework =
+JSON.parse(
+localStorage.getItem("homework") || "[]"
+);
+
+
+
+homework.push(
+input.value
+);
+
+
+
+localStorage.setItem(
+"homework",
+JSON.stringify(homework)
+);
+
+
+
+input.value="";
+
+
+loadHomework();
+
+
+}
+
+
+
+
+
+function loadHomework(){
+
+
+let box =
+document.getElementById("homeworkList");
+
+
+
+if(!box)
+return;
+
+
+
+let homework =
+JSON.parse(
+localStorage.getItem("homework") || "[]"
+);
+
+
+
+box.innerHTML="";
+
+
+
+homework.forEach(item=>{
+
+
+box.innerHTML +=
+`
+<p>
+✅ ${item}
+</p>
+`;
+
+
+});
+
+
+}
+// ======================
+// ⚙️ SETTINGS SYSTEM
 // ======================
 
 
 function darkMode(){
 
-document.body.style.background="#111";
 
-document.body.style.color="white";
+document.body.classList.add("dark");
 
 
 localStorage.setItem(
 "theme",
 "dark"
 );
+
 
 }
 
@@ -239,15 +342,15 @@ localStorage.setItem(
 
 function lightMode(){
 
-document.body.style.background="#f2f5f8";
 
-document.body.style.color="#222";
+document.body.classList.remove("dark");
 
 
 localStorage.setItem(
 "theme",
 "light"
 );
+
 
 }
 
@@ -258,7 +361,9 @@ localStorage.setItem(
 function changeTint(color){
 
 
-let header=document.querySelector("header");
+let header =
+document.querySelector("header");
+
 
 
 if(header){
@@ -266,6 +371,7 @@ if(header){
 header.style.background=color;
 
 }
+
 
 
 localStorage.setItem(
@@ -279,29 +385,16 @@ color
 
 
 
-function changeLanguage(language){
-
-localStorage.setItem(
-"language",
-language
-);
-
-
-alert(
-"Language: "+language
-);
-
-
-}
-
-
-
-
 
 function loadSettings(){
 
 
-if(localStorage.getItem("theme")=="dark"){
+let theme =
+localStorage.getItem("theme");
+
+
+
+if(theme=="dark"){
 
 darkMode();
 
@@ -309,7 +402,8 @@ darkMode();
 
 
 
-let tint=
+
+let tint =
 localStorage.getItem("tint");
 
 
@@ -328,12 +422,15 @@ changeTint(tint);
 
 
 
+
+
 // ======================
-// ARCADE MENU
+// 🎮 LEARN MORE
 // ======================
 
 
 function openGames(){
+
 
 
 document.getElementById("app").innerHTML=`
@@ -342,17 +439,13 @@ document.getElementById("app").innerHTML=`
 
 <h1>🎮 Learn More</h1>
 
-<p>Retro Game Zone</p>
+<p>
+School Game Zone
+</p>
 
 </header>
 
 
-
-<button onclick="location.reload()">
-
-⬅ Back
-
-</button>
 
 
 
@@ -360,51 +453,92 @@ document.getElementById("app").innerHTML=`
 
 
 <button onclick="startSnake()">
+
 🐍 Snake
+
 </button>
+
 
 
 <button onclick="startPong()">
+
 🏓 Pong
+
 </button>
+
 
 
 <button onclick="startShooter()">
-🚀 Shooter
+
+🚀 Space Shooter
+
 </button>
+
 
 
 <button onclick="startBreakout()">
+
 🧱 Breakout
+
 </button>
+
 
 
 </div>
 
 
 
-<canvas id="gameCanvas"
-width="400"
-height="400"></canvas>
+
+
+<canvas 
+id="gameCanvas"
+width="600"
+height="500">
+</canvas>
+
+
+
+
+
+<button onclick="location.reload()">
+
+⬅ Back to School
+
+</button>
 
 
 `;
 
 }
+
+
+
+
+
+
+
+
 // ======================
-// 🐍 SNAKE
+// 🐍 SNAKE GAME
 // ======================
 
 
 function startSnake(){
 
-let canvas=document.getElementById("gameCanvas");
-let ctx=canvas.getContext("2d");
+
+let canvas =
+document.getElementById("gameCanvas");
+
+
+let ctx =
+canvas.getContext("2d");
+
 
 
 let snake=[
 {x:200,y:200}
 ];
+
 
 
 let food={
@@ -413,43 +547,55 @@ y:100
 };
 
 
+
 let dx=20;
+
 let dy=0;
 
 let score=0;
 
 
 
+
+
 document.onkeydown=function(e){
+
 
 
 if(e.key=="ArrowUp" && dy==0){
 
 dx=0;
+
 dy=-20;
 
 }
 
 
+
 if(e.key=="ArrowDown" && dy==0){
 
 dx=0;
+
 dy=20;
 
 }
 
 
+
 if(e.key=="ArrowLeft" && dx==0){
 
 dx=-20;
+
 dy=0;
 
 }
 
 
+
 if(e.key=="ArrowRight" && dx==0){
 
 dx=20;
+
 dy=0;
 
 }
@@ -461,7 +607,9 @@ dy=0;
 
 
 
-function game(){
+
+
+function loop(){
 
 
 ctx.fillStyle="black";
@@ -469,8 +617,8 @@ ctx.fillStyle="black";
 ctx.fillRect(
 0,
 0,
-400,
-400
+600,
+500
 );
 
 
@@ -480,6 +628,7 @@ ctx.fillStyle="lime";
 
 snake.forEach(part=>{
 
+
 ctx.fillRect(
 part.x,
 part.y,
@@ -487,11 +636,14 @@ part.y,
 20
 );
 
+
 });
 
 
 
+
 ctx.fillStyle="red";
+
 
 ctx.fillRect(
 food.x,
@@ -499,6 +651,7 @@ food.y,
 20,
 20
 );
+
 
 
 
@@ -517,24 +670,35 @@ snake.unshift(head);
 
 
 
+
 if(
 head.x==food.x &&
 head.y==food.y
 ){
 
+
 score++;
 
-food.x=Math.floor(Math.random()*20)*20;
 
-food.y=Math.floor(Math.random()*20)*20;
+food.x=
+Math.floor(Math.random()*30)*20;
+
+
+food.y=
+Math.floor(Math.random()*25)*20;
+
 
 
 }
+
 else{
+
 
 snake.pop();
 
+
 }
+
 
 
 
@@ -542,11 +706,13 @@ snake.pop();
 
 ctx.fillStyle="white";
 
+
 ctx.fillText(
 "Score: "+score,
-10,
-20
+20,
+30
 );
+
 
 
 
@@ -555,37 +721,37 @@ ctx.fillText(
 if(
 head.x<0 ||
 head.y<0 ||
-head.x>=400 ||
-head.y>=400
+head.x>=600 ||
+head.y>=500
 ){
 
-alert("Game Over");
+
+alert(
+"Game Over"
+);
+
 
 location.reload();
 
+
 return;
 
-}
-
-
-
-requestAnimationFrame(game);
-
 
 }
 
 
-game();
+
+requestAnimationFrame(loop);
 
 
 }
 
 
 
+loop();
 
 
-
-
+}
 // ======================
 // 🏓 PONG
 // ======================
@@ -594,28 +760,33 @@ game();
 function startPong(){
 
 
-let canvas=document.getElementById("gameCanvas");
-
-let ctx=canvas.getContext("2d");
-
+let canvas =
+document.getElementById("gameCanvas");
 
 
-let playerY=160;
+let ctx =
+canvas.getContext("2d");
 
-let cpuY=160;
+
+
+let playerY=200;
+
+let cpuY=200;
+
 
 
 let ball={
 
-x:200,
+x:300,
 
-y:200,
+y:250,
 
-dx:4,
+dx:5,
 
-dy:3
+dy:4
 
 };
+
 
 
 let score=0;
@@ -628,15 +799,14 @@ document.onkeydown=function(e){
 
 if(e.key=="ArrowUp"){
 
-playerY-=25;
+playerY-=30;
 
 }
 
 
-
 if(e.key=="ArrowDown"){
 
-playerY+=25;
+playerY+=30;
 
 }
 
@@ -649,49 +819,52 @@ playerY+=25;
 
 
 
-function game(){
+function loop(){
 
 
 ctx.fillStyle="black";
 
-ctx.fillRect(0,0,400,400);
+ctx.fillRect(
+0,
+0,
+600,
+500
+);
 
 
 
 ctx.fillStyle="white";
 
 
-
-// player
+// Player
 
 ctx.fillRect(
-20,
+30,
 playerY,
-10,
-80
+15,
+100
 );
 
 
-
-// cpu
+// CPU
 
 ctx.fillRect(
-370,
+555,
 cpuY,
-10,
-80
+15,
+100
 );
 
 
-
-// ball
+// Ball
 
 ctx.fillRect(
 ball.x,
 ball.y,
-10,
-10
+15,
+15
 );
+
 
 
 
@@ -701,10 +874,9 @@ ball.y+=ball.dy;
 
 
 
-
 if(
 ball.y<=0 ||
-ball.y>=390
+ball.y>=485
 ){
 
 ball.dy*=-1;
@@ -715,9 +887,9 @@ ball.dy*=-1;
 
 
 if(
-ball.x<40 &&
+ball.x<45 &&
 ball.y>playerY &&
-ball.y<playerY+80
+ball.y<playerY+100
 ){
 
 ball.dx*=-1;
@@ -729,11 +901,10 @@ score++;
 
 
 
-
 if(
-ball.x>360 &&
+ball.x>540 &&
 ball.y>cpuY &&
-ball.y<cpuY+80
+ball.y<cpuY+100
 ){
 
 ball.dx*=-1;
@@ -744,19 +915,19 @@ ball.dx*=-1;
 
 
 
-// CPU AI
-
 cpuY +=
-(ball.y-cpuY)*0.04;
+(ball.y-cpuY)*0.05;
 
 
 
 
 ctx.fillText(
 "Score: "+score,
-10,
-20
+20,
+30
 );
+
+
 
 
 
@@ -770,16 +941,20 @@ location.reload();
 
 
 
-requestAnimationFrame(game);
+
+requestAnimationFrame(loop);
 
 
 }
 
 
-game();
+
+loop();
 
 
 }
+
+
 
 
 
@@ -794,13 +969,16 @@ game();
 function startShooter(){
 
 
-let canvas=document.getElementById("gameCanvas");
-
-let ctx=canvas.getContext("2d");
-
+let canvas =
+document.getElementById("gameCanvas");
 
 
-let player=185;
+let ctx =
+canvas.getContext("2d");
+
+
+
+let player=280;
 
 let bullets=[];
 
@@ -816,7 +994,7 @@ document.onkeydown=function(e){
 
 if(e.key=="ArrowLeft"){
 
-player-=20;
+player-=25;
 
 }
 
@@ -824,7 +1002,7 @@ player-=20;
 
 if(e.key=="ArrowRight"){
 
-player+=20;
+player+=25;
 
 }
 
@@ -834,11 +1012,12 @@ if(e.code=="Space"){
 
 bullets.push({
 
-x:player+12,
+x:player+15,
 
-y:350
+y:450
 
 });
+
 
 }
 
@@ -850,26 +1029,29 @@ y:350
 
 
 
+
 setInterval(()=>{
 
 
 enemies.push({
 
-x:Math.random()*370,
+x:Math.random()*570,
 
 y:0
 
 });
 
 
-},800);
+},900);
 
 
 
 
 
 
-function game(){
+
+function loop(){
+
 
 
 ctx.fillStyle="black";
@@ -877,23 +1059,30 @@ ctx.fillStyle="black";
 ctx.fillRect(
 0,
 0,
-400,
-400
+600,
+500
 );
 
 
+
+
+// Player
 
 ctx.fillStyle="lime";
 
 
 ctx.fillRect(
 player,
-350,
-30,
-30
+450,
+40,
+40
 );
 
 
+
+
+
+// Bullets
 
 ctx.fillStyle="yellow";
 
@@ -901,14 +1090,14 @@ ctx.fillStyle="yellow";
 bullets.forEach(b=>{
 
 
-b.y-=7;
+b.y-=8;
 
 
 ctx.fillRect(
 b.x,
 b.y,
-5,
-10
+6,
+15
 );
 
 
@@ -917,6 +1106,8 @@ b.y,
 
 
 
+
+// Enemies
 
 ctx.fillStyle="red";
 
@@ -924,20 +1115,25 @@ ctx.fillStyle="red";
 enemies.forEach(e=>{
 
 
-e.y+=3;
+e.y+=4;
 
 
 ctx.fillRect(
 e.x,
 e.y,
-30,
-30
+35,
+35
 );
 
 
 });
 
 
+
+
+
+
+// Collision
 
 
 bullets.forEach((b,bi)=>{
@@ -948,20 +1144,28 @@ enemies.forEach((e,ei)=>{
 
 if(
 
-b.x<e.x+30 &&
+b.x<e.x+35 &&
 
-b.x+5>e.x &&
+b.x+6>e.x &&
 
-b.y<e.y+30 &&
+b.y<e.y+35 &&
 
-b.y+10>e.y
+b.y+15>e.y
 
 ){
 
 
-bullets.splice(bi,1);
+bullets.splice(
+bi,
+1
+);
 
-enemies.splice(ei,1);
+
+enemies.splice(
+ei,
+1
+);
+
 
 score++;
 
@@ -977,27 +1181,38 @@ score++;
 
 
 
+
+
 ctx.fillStyle="white";
 
 
 ctx.fillText(
 "Score: "+score,
-10,
-20
+20,
+30
 );
 
 
 
-requestAnimationFrame(game);
+requestAnimationFrame(loop);
 
 
 }
 
 
-game();
+
+loop();
 
 
 }
+
+
+
+
+
+
+
+
 // ======================
 // 🧱 BREAKOUT
 // ======================
@@ -1006,24 +1221,28 @@ game();
 function startBreakout(){
 
 
-let canvas=document.getElementById("gameCanvas");
-
-let ctx=canvas.getContext("2d");
-
+let canvas =
+document.getElementById("gameCanvas");
 
 
-let paddle=160;
+let ctx =
+canvas.getContext("2d");
+
+
+
+let paddle=260;
+
 
 
 let ball={
 
-x:200,
+x:300,
 
-y:200,
+y:250,
 
-dx:4,
+dx:5,
 
-dy:-4
+dy:-5
 
 };
 
@@ -1033,17 +1252,17 @@ let bricks=[];
 
 
 
-for(let row=0;row<4;row++){
+for(let y=0;y<4;y++){
 
 
-for(let col=0;col<8;col++){
+for(let x=0;x<10;x++){
 
 
 bricks.push({
 
-x:col*50+5,
+x:x*60,
 
-y:row*25+20,
+y:y*30,
 
 alive:true
 
@@ -1057,20 +1276,20 @@ alive:true
 
 
 
+
 document.onkeydown=function(e){
 
 
 if(e.key=="ArrowLeft"){
 
-paddle-=25;
+paddle-=30;
 
 }
 
 
-
 if(e.key=="ArrowRight"){
 
-paddle+=25;
+paddle+=30;
 
 }
 
@@ -1082,8 +1301,7 @@ paddle+=25;
 
 
 
-
-function game(){
+function loop(){
 
 
 ctx.fillStyle="black";
@@ -1091,35 +1309,35 @@ ctx.fillStyle="black";
 ctx.fillRect(
 0,
 0,
-400,
-400
+600,
+500
 );
 
 
 
 
-// paddle
+// Paddle
 
 ctx.fillStyle="white";
 
 
 ctx.fillRect(
 paddle,
-370,
-80,
-10
+460,
+100,
+15
 );
 
 
 
 
-// ball
+// Ball
 
 ctx.fillRect(
 ball.x,
 ball.y,
-10,
-10
+15,
+15
 );
 
 
@@ -1130,9 +1348,10 @@ ball.y+=ball.dy;
 
 
 
+
 if(
-ball.x<0 ||
-ball.x>390
+ball.x<=0 ||
+ball.x>=585
 ){
 
 ball.dx*=-1;
@@ -1141,7 +1360,7 @@ ball.dx*=-1;
 
 
 
-if(ball.y<0){
+if(ball.y<=0){
 
 ball.dy*=-1;
 
@@ -1150,9 +1369,9 @@ ball.dy*=-1;
 
 
 if(
-ball.y>350 &&
+ball.y>430 &&
 ball.x>paddle &&
-ball.x<paddle+80
+ball.x<paddle+100
 ){
 
 ball.dy*=-1;
@@ -1161,9 +1380,6 @@ ball.dy*=-1;
 
 
 
-
-
-// bricks
 
 
 bricks.forEach(brick=>{
@@ -1178,10 +1394,9 @@ ctx.fillStyle="red";
 ctx.fillRect(
 brick.x,
 brick.y,
-45,
+50,
 20
 );
-
 
 
 
@@ -1190,13 +1405,14 @@ if(
 
 ball.x>brick.x &&
 
-ball.x<brick.x+45 &&
+ball.x<brick.x+50 &&
 
 ball.y>brick.y &&
 
 ball.y<brick.y+20
 
 ){
+
 
 brick.alive=false;
 
@@ -1213,94 +1429,30 @@ ball.dy*=-1;
 
 
 
-requestAnimationFrame(game);
+
+if(
+bricks.every(b=>!b.alive)
+){
+
+alert("You win!");
+
+location.reload();
+
+}
+
+
+
+requestAnimationFrame(loop);
 
 
 }
 
 
 
-game();
+loop();
 
 
 }
-
-
-
-
-
-
-
-
-// ======================
-// 📱 TOUCH CONTROLS
-// ======================
-
-
-let touchStartX=0;
-
-
-
-document.addEventListener(
-"touchstart",
-function(e){
-
-
-touchStartX =
-e.touches[0].clientX;
-
-
-});
-
-
-
-
-
-document.addEventListener(
-"touchend",
-function(e){
-
-
-let endX =
-e.changedTouches[0].clientX;
-
-
-
-if(endX-touchStartX>40){
-
-
-document.dispatchEvent(
-new KeyboardEvent(
-"keydown",
-{
-key:"ArrowRight"
-}
-)
-);
-
-
-}
-
-
-
-if(touchStartX-endX>40){
-
-
-document.dispatchEvent(
-new KeyboardEvent(
-"keydown",
-{
-key:"ArrowLeft"
-}
-)
-);
-
-
-}
-
-
-});
-
 
 
 
@@ -1324,9 +1476,6 @@ navigator.getGamepads()[0];
 if(pad){
 
 
-
-// left stick / dpad left
-
 if(
 pad.buttons[14] &&
 pad.buttons[14].pressed
@@ -1346,8 +1495,6 @@ key:"ArrowLeft"
 
 
 
-// dpad right
-
 if(
 pad.buttons[15] &&
 pad.buttons[15].pressed
@@ -1365,10 +1512,6 @@ key:"ArrowRight"
 }
 
 
-
-
-
-// A button = shoot
 
 if(
 pad.buttons[0] &&
@@ -1401,7 +1544,4 @@ controllerLoop
 
 
 controllerLoop();
-
-
-
 
